@@ -30,7 +30,6 @@
       overflow-x: hidden;
     }
 
-    /* Ambient Lighting Effect */
     .glow {
       position: fixed;
       top: -10%;
@@ -42,7 +41,6 @@
       pointer-events: none;
     }
 
-    /* Professional Navigation */
     nav {
       position: sticky;
       top: 0;
@@ -72,7 +70,6 @@
 
     nav a:hover, nav a.active { color: var(--accent); }
 
-    /* Layout Containers */
     header {
       max-width: 1000px;
       margin: 80px auto 40px;
@@ -104,7 +101,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Professional Cards (Bento Style) */
     .bento-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -130,19 +126,17 @@
     h3 { font-size: 1.1rem; margin-bottom: 10px; }
     p { color: var(--dim); font-size: 0.95rem; }
 
-    /* Skills Badges */
     .skills-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
     .skill {
       background: var(--accent-soft);
       color: var(--accent);
       padding: 6px 14px;
       border-radius: 100px;
-   7   font-size: 0.75rem;
+      font-size: 0.75rem;
       font-weight: 700;
       border: 1px solid rgba(56, 189, 248, 0.2);
     }
 
-    /* Chatbot UI */
     .chat-widget {
       position: fixed;
       bottom: 30px;
@@ -195,6 +189,8 @@
       font-size: 0.85rem;
     }
 
+    .contact-links { display: flex; flex-direction: column; gap: 15px; align-items: center; }
+
     footer { text-align: center; padding: 60px; color: var(--dim); font-size: 0.75rem; border-top: 1px solid var(--border); }
 
     @media (max-width: 600px) {
@@ -212,7 +208,7 @@
       <a href="#about" class="active" onclick="navigate(event, 'about')">ABOUT</a>
       <a href="#expertise" onclick="navigate(event, 'expertise')">EXPERTISE</a>
       <a href="#work" onclick="navigate(event, 'work')">STUDIES</a>
-      <a href="#project" onclick="navigate(event, 'contact')">PROJECT</a>
+      <a href="#project" onclick="navigate(event, 'project')">PROJECT</a>
        <a href="#contact" onclick="navigate(event, 'contact')">CONTACT</a>
     </div>
   </nav>
@@ -225,7 +221,7 @@
   <section id="about" class="active">
     <div class="card">
       <h2>The Objective</h2>
-      <p>I am a student currently building a foundation in Information Technology.   <strong></strong> <strong></strong>. I believe that professional code isn't just about functionality, but also about simplicity and reliability.</p>
+      <p>I am a student currently building a foundation in Information Technology. I am dedicated to learning the architecture behind scalable systems. I believe that professional code isn't just about functionality, but also about simplicity and reliability.</p>
     </div>
   </section>
 
@@ -237,15 +233,15 @@
         <p>Mastering core logic and structured development.</p>
         <div class="skills-container">
           <div class="skill">JAVA</div>
-          
-          <div class="skill">HTML</div>
+          <div class="skill">HTML/CSS</div>
+          <div class="skill">JAVASCRIPT</div>
         </div>
       </div>
       <div class="card">
         <h3>Design Systems</h3>
+        <p>Prototyping clean, user-centric interfaces.</p>
           <div class="skills-container">
           <div class="skill">FIGMA</div>
-          
         </div>
       </div>
     </div>
@@ -256,7 +252,7 @@
     <div class="bento-grid">
       <div class="card">
         <h3>Logic Lab</h3>
-        <p>Researching and practicing algorithm efficiency using Java and JavaScript environments.</p>
+        <p>Researching and practicing algorithm efficiency using Java and development environments.</p>
       </div>
       <div class="card">
         <h3>Interface Development</h3>
@@ -265,13 +261,23 @@
     </div>
   </section>
 
+  <section id="project">
+    <h2>Projects</h2>
+    <div class="card">
+      <h3>Portfolio V1</h3>
+      <p>A minimalist personal portfolio built with HTML, CSS, and Vanilla JavaScript to showcase academic progress.</p>
+    </div>
+  </section>
+
   <section id="contact">
     <div class="card" style="text-align: center;">
       <h2>Let's Connect</h2>
       <p style="margin-bottom: 20px;">Open for academic collaboration and technical discussions.</p>
-      <a href="mailto:espinosaanthony50@gmail.com" style="color: var(--accent); text-decoration: none; font-weight: 800; font-size: 1.2rem;">espinosaanthony50@gmail.com</a>
-      <a href="mailto:(https://www.facebook.com/anthony.ortegaespinosa.1)" style="color: var(--accent); text-decoration: none; font-weight: 800; font-size: 1.2rem;">Anthony Espinosa </a>
-      <a href="mailto:https://www.instagram.com/toni_2high?igsh=MXFxcXVwc2Y5bXRpeQ==" style="color: var(--accent); text-decoration: none; font-weight: 800; font-size: 1.2rem;">toni_2high </a>
+      <div class="contact-links">
+        <a href="mailto:espinosaanthony50@gmail.com" style="color: var(--accent); text-decoration: none; font-weight: 800; font-size: 1.2rem;">espinosaanthony50@gmail.com</a>
+        <a href="https://www.facebook.com/anthony.ortegaespinosa.1" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: 800; font-size: 1.2rem;">Facebook: Anthony Espinosa</a>
+        <a href="https://www.instagram.com/toni_2high?igsh=MXFxcXVwc2Y5bXRpeQ==" target="_blank" style="color: var(--accent); text-decoration: none; font-weight: 800; font-size: 1.2rem;">Instagram: toni_2high</a>
+      </div>
     </div>
   </section>
 
@@ -291,18 +297,19 @@
   </footer>
 
   <script>
-    // Professional Navigation Logic
     function navigate(event, id) {
       event.preventDefault();
       document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
       document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
       
-      document.getElementById(id).classList.add('active');
-      event.currentTarget.classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      const targetSection = document.getElementById(id);
+      if (targetSection) {
+        targetSection.classList.add('active');
+        event.currentTarget.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     }
 
-    // Interactive Chatbot Logic
     function handleChat(e) {
       if (e.key === 'Enter') {
         const input = document.getElementById('chatInput');
@@ -315,7 +322,7 @@
           let response = "I don't have information on that specific query. Please try asking about 'skills', 'studies', or 'contact'.";
           
           if (query.includes("skill") || query.includes("focus")) {
-            response = "Anthony is focused on Java, JavaScript, and UI Design via Figma.";
+            response = "Anthony is focused on Java, HTML/CSS, and UI Design via Figma.";
           } else if (query.includes("study") || query.includes("work")) {
             response = "Anthony is currently documenting his academic progress in algorithm logic and web architecture.";
           } else if (query.includes("contact") || query.includes("email")) {
