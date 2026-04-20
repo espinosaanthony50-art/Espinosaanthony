@@ -212,7 +212,8 @@
       <a href="#about" class="active" onclick="navigate(event, 'about')">ABOUT</a>
       <a href="#expertise" onclick="navigate(event, 'expertise')">EXPERTISE</a>
       <a href="#work" onclick="navigate(event, 'work')">STUDIES</a>
-      <a href="#contact" onclick="navigate(event, 'contact')">CONTACT</a>
+      <a href="#project" onclick="navigate(event, 'contact')">PROJECT</a>
+       <a href="#contact" onclick="navigate(event, 'contact')">CONTACT</a>
     </div>
   </nav>
 
@@ -237,7 +238,7 @@
         <div class="skills-container">
           <div class="skill">JAVA</div>
           
-          <div class="skill">HTML5/CSS3</div>
+          <div class="skill">HTML</div>
         </div>
       </div>
       <div class="card">
@@ -269,6 +270,8 @@
       <h2>Let's Connect</h2>
       <p style="margin-bottom: 20px;">Open for academic collaboration and technical discussions.</p>
       <a href="mailto:espinosaanthony50@gmail.com" style="color: var(--accent); text-decoration: none; font-weight: 800; font-size: 1.2rem;">espinosaanthony50@gmail.com</a>
+      <a href="mailto:(https://www.facebook.com/anthony.ortegaespinosa.1)" style="color: var(--accent); text-decoration: none; font-weight: 800; font-size: 1.2rem;">Anthony Espinosa </a>
+      <a href="mailto:https://www.instagram.com/toni_2high?igsh=MXFxcXVwc2Y5bXRpeQ==" style="color: var(--accent); text-decoration: none; font-weight: 800; font-size: 1.2rem;">toni_2high </a>
     </div>
   </section>
 
