@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -6,10 +6,6 @@
   <title>Anthony Espinosa | IT Professional Portfolio</title>
   
   <meta name="description" content="Portfolio of Anthony Espinosa, an IT Student & Developer based in the Philippines.">
-  <meta property="og:title" content="Anthony Espinosa | IT Portfolio">
-  <meta property="og:description" content="Bridging technical logic with professional minimalist design.">
-  <meta property="og:type" content="website">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
@@ -35,7 +31,6 @@
       line-height: 1.6;
     }
 
-    /* Ambient background glow */
     .bg-glow {
       position: fixed;
       width: 500px;
@@ -53,7 +48,7 @@
     }
 
     header h1 {
-      font-size: clamp(2.8rem, 10vw, 4.5rem);
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
       margin: 0;
       background: linear-gradient(to right, #38bdf8, #818cf8);
       -webkit-background-clip: text;
@@ -72,7 +67,8 @@
     nav {
       display: flex;
       justify-content: center;
-      gap: 30px;
+      flex-wrap: wrap;
+      gap: 15px;
       padding: 20px;
       background: rgba(3, 7, 18, 0.8);
       backdrop-filter: blur(12px);
@@ -86,10 +82,11 @@
       text-decoration: none;
       color: var(--text-dim);
       font-weight: 500;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       text-transform: uppercase;
       letter-spacing: 1px;
       transition: var(--transition);
+      cursor: pointer;
     }
 
     nav a:hover, nav a.active {
@@ -99,7 +96,7 @@
     section {
       display: none;
       max-width: 900px;
-      margin: 60px auto;
+      margin: 40px auto;
       padding: 50px 40px;
       background: var(--card-bg);
       border-radius: 32px;
@@ -126,7 +123,7 @@
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 25px;
     }
 
@@ -146,29 +143,32 @@
 
     .project-thumb {
       width: 100%;
-      height: 200px;
+      height: 180px;
       object-fit: cover;
       border-radius: 14px;
       margin-bottom: 20px;
       border: 1px solid var(--border);
     }
 
-    /* Buttons */
     .btn-group {
       display: flex;
+      flex-wrap: wrap;
       gap: 15px;
       margin-top: 30px;
     }
 
-    .primary-btn {
-      padding: 14px 35px;
-      background: var(--accent);
-      color: var(--bg);
+    .primary-btn, .cv-btn {
+      padding: 14px 30px;
       border-radius: 12px;
       text-decoration: none;
       font-weight: 700;
       transition: var(--transition);
-      display: inline-block;
+      text-align: center;
+    }
+
+    .primary-btn {
+      background: var(--accent);
+      color: var(--bg);
     }
 
     .primary-btn:hover {
@@ -177,14 +177,9 @@
     }
 
     .cv-btn {
-      padding: 14px 35px;
       background: transparent;
       color: var(--accent);
       border: 1px solid var(--accent);
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: var(--transition);
     }
 
     .cv-btn:hover {
@@ -194,9 +189,9 @@
     /* Chatbot */
     .chatbot {
       position: fixed;
-      bottom: 25px;
-      right: 25px;
-      width: 320px;
+      bottom: 20px;
+      right: 20px;
+      width: 300px;
       background: var(--card-bg);
       border-radius: 20px;
       border: 1px solid var(--border);
@@ -208,22 +203,23 @@
     .chat-header {
       background: var(--accent);
       color: var(--bg);
-      padding: 15px;
+      padding: 12px;
       font-weight: 800;
       text-align: center;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       letter-spacing: 1px;
     }
 
     .chat-body {
-      height: 250px;
+      height: 200px;
       padding: 15px;
       overflow-y: auto;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       background: #020617;
       display: flex;
       flex-direction: column;
       gap: 10px;
+      scroll-behavior: smooth;
     }
 
     #chatInput {
@@ -231,17 +227,21 @@
       background: var(--card-bg);
       border: none;
       border-top: 1px solid var(--border);
-      padding: 15px;
+      padding: 12px;
       color: white;
       outline: none;
     }
 
     footer {
       text-align: center;
-      padding: 80px 20px;
+      padding: 60px 20px;
       color: var(--text-dim);
-      font-size: 0.8rem;
-      letter-spacing: 1px;
+      font-size: 0.75rem;
+    }
+
+    @media (max-width: 600px) {
+      section { padding: 30px 20px; margin: 20px; }
+      .chatbot { display: none; } /* Hide chat on mobile for better UX */
     }
   </style>
 </head>
@@ -255,18 +255,18 @@
   </header>
 
   <nav id="navbar">
-    <a href="#home" class="active" onclick="showSection('home')">Home</a>
-    <a href="#about" onclick="showSection('about')">About</a>
-    <a href="#projects" onclick="showSection('projects')">Projects</a>
-    <a href="#skills" onclick="showSection('skills')">Skills</a>
-    <a href="#contact" onclick="showSection('contact')">Contact</a>
+    <a href="#home" onclick="showSection(event, 'home')">Home</a>
+    <a href="#about" onclick="showSection(event, 'about')">About</a>
+    <a href="#projects" onclick="showSection(event, 'projects')">Projects</a>
+    <a href="#skills" onclick="showSection(event, 'skills')">Skills</a>
+    <a href="#contact" onclick="showSection(event, 'contact')">Contact</a>
   </nav>
 
   <section id="home" class="active">
     <h2>Welcome</h2>
     <p>I build clean, logical, and user-centered digital experiences. Based in the Philippines, I'm currently focused on bridging the gap between technical efficiency and intuitive design.</p>
     <div class="btn-group">
-      <a href="#projects" class="primary-btn" onclick="showSection('projects')">View My Work</a>
+      <a href="#projects" class="primary-btn" onclick="showSection(event, 'projects')">View My Work</a>
       <a href="cv.pdf" download class="cv-btn">Download CV</a>
     </div>
   </section>
@@ -274,21 +274,24 @@
   <section id="about">
     <h2>About Me</h2>
     <p>I am an IT student with a passion for full-stack development. I believe that great software is born at the intersection of technical logic and human experience.</p>
-    <p>Currently dedicated to mastering modern UI frameworks and simplifying complex digital workflows.</p>
   </section>
 
   <section id="projects">
     <h2>Featured Work</h2>
     <div class="grid">
       <div class="item-card">
-        <img src="A.jpg" alt="Jersey Layout" class="project-thumb">
+        <div style="background:#1f2937; height:180px; border-radius:14px; margin-bottom:20px; display:flex; align-items:center; justify-content:center;">
+            <span>Project A Image</span>
+        </div>
         <h3>Jersey Layout Engine</h3>
-        <p>A specialized configuration tool for apparel design and visualization.</p>
+        <p>A specialized configuration tool for apparel design.</p>
       </div>
       <div class="item-card">
-        <img src="project2.png" alt="Logic Engine" class="project-thumb">
+        <div style="background:#1f2937; height:180px; border-radius:14px; margin-bottom:20px; display:flex; align-items:center; justify-content:center;">
+            <span>Project B Image</span>
+        </div>
         <h3>Logic Engine</h3>
-        <p>JavaScript utilities designed to automate complex data workflows.</p>
+        <p>JS utilities designed to automate data workflows.</p>
       </div>
     </div>
   </section>
@@ -304,28 +307,21 @@
         <h3>Design</h3>
         <p>Figma, UI/UX Strategy, Minimalist Design</p>
       </div>
-      <div class="item-card">
-        <h3>Certification</h3>
-        <img src="B.jpg" alt="Certification" class="project-thumb" style="height:120px;">
-        <p>Verified Professional Training (2025)</p>
-      </div>
     </div>
   </section>
 
   <section id="contact">
     <h2>Let's Connect</h2>
-    <p>Available for freelance projects and IT consultancy. Reach out through any of these channels:</p>
-    <div style="margin-top: 30px; display: flex; flex-direction: column; gap: 15px;">
+    <div style="display: flex; flex-direction: column; gap: 15px;">
       <a href="mailto:espinosaanthony50@gmail.com" style="color:var(--accent); text-decoration:none;">📧 espinosaanthony50@gmail.com</a>
-      <a href="https://www.facebook.com/share/1AyUQ6gKmh/" target="_blank" style="color:var(--accent); text-decoration:none;">👤 Anthony Espinosa</a>
-      <a href="https://www.instagram.com/toni_2high" target="_blank" style="color:var(--accent); text-decoration:none;">📸 @toni_2high</a>
+      <a href="#" style="color:var(--accent); text-decoration:none;">👤 Anthony Espinosa (Facebook)</a>
     </div>
   </section>
 
   <div class="chatbot">
     <div class="chat-header">SYSTEM ASSISTANT // ACTIVE</div>
     <div class="chat-body" id="chatBody">
-      <p><span style="color:var(--accent)">[Bot]:</span> Welcome. Ask me about Anthony's skills, projects, or background.</p>
+      <p><span style="color:var(--accent)">[Bot]:</span> Hello. Ask me about Anthony's skills or projects.</p>
     </div>
     <input type="text" id="chatInput" placeholder="Type a command..." onkeypress="handleChat(event)">
   </div>
@@ -335,25 +331,31 @@
   </footer>
 
   <script>
-    function showSection(sectionId) {
+    function showSection(event, sectionId) {
+      if(event) event.preventDefault();
+      
+      // Hide all sections
       document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+      // Remove active class from all links
       document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
 
       const target = document.getElementById(sectionId);
       if(target) {
         target.classList.add('active');
+        // Add active class to clicked link
         const activeLink = document.querySelector(`nav a[href="#${sectionId}"]`);
         if (activeLink) activeLink.classList.add('active');
-        window.history.pushState(null, null, `#${sectionId}`);
+        
+        // Scroll to top of section
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     }
 
     const botResponses = {
-      skills: "Anthony is proficient in HTML5, Java, and JavaScript, with specialized skills in UI/UX Design using Figma.",
-      projects: "He has developed a Jersey Layout Engine and custom Logic Engines for data automation.",
-      about: "Anthony is an IT student focused on Full-Stack development and simplifying complex digital workflows.",
-      contact: "You can reach Anthony via email at espinosaanthony50@gmail.com or find him on Instagram @toni_2high.",
-      hi: "Hello! I am Anthony's virtual assistant. How can I help you navigate his portfolio today?"
+      skills: "Anthony is proficient in HTML5, Java, and JavaScript, with specialized skills in UI/UX Design.",
+      projects: "He has developed a Jersey Layout Engine and custom Logic Engines.",
+      contact: "Email him at espinosaanthony50@gmail.com.",
+      hi: "Hello! How can I help you today?"
     };
 
     function handleChat(event) {
@@ -365,29 +367,27 @@
         if (val) {
           chatBody.innerHTML += `<p><span style="color:#fff">[You]:</span> ${val}</p>`;
           
-          let response = "I'm not sure about that. Try asking about 'skills', 'projects', or 'contact'.";
-          
+          let response = "Try asking about 'skills', 'projects', or 'contact'.";
           if(val.includes("skill")) response = botResponses.skills;
-          if(val.includes("project")) response = botResponses.projects;
-          if(val.includes("about") || val.includes("who")) response = botResponses.about;
-          if(val.includes("contact") || val.includes("email")) response = botResponses.contact;
-          if(val.includes("hi") || val.includes("hello")) response = botResponses.hi;
+          else if(val.includes("project")) response = botResponses.projects;
+          else if(val.includes("contact")) response = botResponses.contact;
+          else if(val.includes("hi") || val.includes("hello")) response = botResponses.hi;
           
           setTimeout(() => {
             chatBody.innerHTML += `<p><span style="color:var(--accent)">[Bot]:</span> ${response}</p>`;
             chatBody.scrollTop = chatBody.scrollHeight;
-          }, 400);
+          }, 300);
 
           input.value = "";
         }
       }
     }
 
+    // Initial load
     window.addEventListener('load', () => {
       const hash = window.location.hash.substring(1) || 'home';
-      showSection(hash);
+      showSection(null, hash);
     });
   </script>
 </body>
 </html>
-
