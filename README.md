@@ -1,393 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Anthony Espinosa | IT Professional Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anthony Espinosa | IT Portfolio</title>
   
-  <meta name="description" content="Portfolio of Anthony Espinosa, an IT Student & Developer based in the Philippines.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
   
   <style>
     :root {
-      --bg: #030712;
-      --card-bg: #111827;
+      --bg: #050505;
+      --card: #0f0f0f;
       --accent: #38bdf8;
-      --text-main: #f9fafb;
-      --text-dim: #94a3b8;
-      --border: rgba(255, 255, 255, 0.08);
-      --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      --accent-soft: rgba(56, 189, 248, 0.1);
+      --text: #f8fafc;
+      --dim: #94a3b8;
+      --border: rgba(255, 255, 255, 0.05);
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
     body { 
       background-color: var(--bg);
-      color: var(--text-main);
-      font-family: 'Space Grotesk', sans-serif;
-      overflow-x: hidden;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    .bg-glow {
+    /* Ambient Lighting Effect */
+    .glow {
       position: fixed;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, transparent 70%);
-      top: -150px;
-      right: -150px;
+      top: -10%;
+      right: -10%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
       z-index: -1;
       pointer-events: none;
     }
 
-    header {
-      text-align: center;
-      padding: 80px 20px 40px;
-    }
-
-    header h1 {
-      font-size: clamp(2.5rem, 8vw, 4.5rem);
-      margin: 0;
-      background: linear-gradient(to right, #38bdf8, #818cf8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      letter-spacing: -2px;
-      font-weight: 700;
-    }
-
-    header p {
-      font-size: 1.2rem;
-      color: var(--text-dim);
-      margin-top: 10px;
-      font-weight: 300;
-    }
-
+    /* Professional Navigation */
     nav {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 15px;
-      padding: 20px;
-      background: rgba(3, 7, 18, 0.8);
-      backdrop-filter: blur(12px);
       position: sticky;
       top: 0;
       z-index: 1000;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(5, 5, 5, 0.8);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      display: flex;
+      gap: 30px;
     }
 
     nav a {
       text-decoration: none;
-      color: var(--text-dim);
-      font-weight: 500;
+      color: var(--dim);
       font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
       transition: var(--transition);
       cursor: pointer;
     }
 
-    nav a:hover, nav a.active {
-      color: var(--accent);
+    nav a:hover, nav a.active { color: var(--accent); }
+
+    /* Layout Containers */
+    header {
+      max-width: 1000px;
+      margin: 80px auto 40px;
+      padding: 0 20px;
+      text-align: center;
     }
+
+    header h1 {
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
+      font-weight: 800;
+      letter-spacing: -2px;
+      margin-bottom: 10px;
+    }
+
+    header span { color: var(--accent); }
 
     section {
+      max-width: 1000px;
+      margin: 0 auto 100px;
+      padding: 0 20px;
       display: none;
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 50px 40px;
-      background: var(--card-bg);
-      border-radius: 32px;
-      border: 1px solid var(--border);
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      animation: fadeInUp 0.6s ease forwards;
     }
 
-    section.active {
-      display: block;
-      animation: fadeIn 0.6s forwards;
-    }
+    section.active { display: block; }
 
-    @keyframes fadeIn {
+    @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    h2 {
-      font-size: 2.2rem;
-      margin-bottom: 30px;
-      color: var(--accent);
-      letter-spacing: -1px;
-    }
-
-    .grid {
+    /* Professional Cards (Bento Style) */
+    .bento-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 25px;
-    }
-
-    .item-card {
-      background: rgba(255, 255, 255, 0.02);
-      padding: 30px;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-      transition: var(--transition);
-    }
-
-    .item-card:hover {
-      transform: translateY(-10px);
-      border-color: var(--accent);
-      background: rgba(56, 189, 248, 0.03);
-    }
-
-    .project-thumb {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 14px;
-      margin-bottom: 20px;
-      border: 1px solid var(--border);
-    }
-
-    .btn-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
       margin-top: 30px;
     }
 
-    .primary-btn, .cv-btn {
-      padding: 14px 30px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: var(--transition);
-      text-align: center;
-    }
-
-    .primary-btn {
-      background: var(--accent);
-      color: var(--bg);
-    }
-
-    .primary-btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
-    }
-
-    .cv-btn {
-      background: transparent;
-      color: var(--accent);
-      border: 1px solid var(--accent);
-    }
-
-    .cv-btn:hover {
-      background: rgba(56, 189, 248, 0.1);
-    }
-
-    /* Chatbot */
-    .chatbot {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      width: 300px;
-      background: var(--card-bg);
-      border-radius: 20px;
+    .card {
+      background: var(--card);
       border: 1px solid var(--border);
-      overflow: hidden;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+      padding: 35px;
+      border-radius: 24px;
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      border-color: rgba(56, 189, 248, 0.3);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 20px; color: var(--accent); }
+    h3 { font-size: 1.1rem; margin-bottom: 10px; }
+    p { color: var(--dim); font-size: 0.95rem; }
+
+    /* Skills Badges */
+    .skills-container { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+    .skill {
+      background: var(--accent-soft);
+      color: var(--accent);
+      padding: 6px 14px;
+      border-radius: 100px;
+   7   font-size: 0.75rem;
+      font-weight: 700;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+
+    /* Chatbot UI */
+    .chat-widget {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 340px;
+      background: #111;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
       z-index: 2000;
+      overflow: hidden;
     }
 
     .chat-header {
-      background: var(--accent);
-      color: var(--bg);
-      padding: 12px;
-      font-weight: 800;
-      text-align: center;
+      padding: 15px 20px;
+      background: rgba(255,255,255,0.03);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
       font-size: 0.7rem;
-      letter-spacing: 1px;
+      font-weight: 800;
+      color: var(--dim);
     }
 
+    .status { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; }
+
     .chat-body {
-      height: 200px;
-      padding: 15px;
+      height: 240px;
+      padding: 20px;
       overflow-y: auto;
-      font-size: 0.8rem;
-      background: #020617;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      scroll-behavior: smooth;
+      gap: 12px;
+      font-size: 0.85rem;
     }
+
+    .bubble { padding: 10px 14px; border-radius: 14px; max-width: 85%; }
+    .bubble.bot { background: var(--accent-soft); color: var(--text); align-self: flex-start; border-bottom-left-radius: 2px; }
+    .bubble.user { background: var(--accent); color: #000; font-weight: 600; align-self: flex-end; border-bottom-right-radius: 2px; }
 
     #chatInput {
       width: 100%;
-      background: var(--card-bg);
+      padding: 18px;
+      background: transparent;
       border: none;
       border-top: 1px solid var(--border);
-      padding: 12px;
       color: white;
       outline: none;
+      font-size: 0.85rem;
     }
 
-    footer {
-      text-align: center;
-      padding: 60px 20px;
-      color: var(--text-dim);
-      font-size: 0.75rem;
-    }
+    footer { text-align: center; padding: 60px; color: var(--dim); font-size: 0.75rem; border-top: 1px solid var(--border); }
 
     @media (max-width: 600px) {
-      section { padding: 30px 20px; margin: 20px; }
-      .chatbot { display: none; } /* Hide chat on mobile for better UX */
+      .chat-widget { display: none; }
+      header h1 { font-size: 3rem; }
     }
   </style>
 </head>
 <body>
 
-  <div class="bg-glow"></div>
+  <div class="glow"></div>
 
-  <header>
-    <h1>Anthony Espinosa</h1>
-    <p>Digital Architect & IT Student</p>
-  </header>
-
-  <nav id="navbar">
-    <a href="#home" onclick="showSection(event, 'home')">Home</a>
-    <a href="#about" onclick="showSection(event, 'about')">About</a>
-    <a href="#projects" onclick="showSection(event, 'projects')">Projects</a>
-    <a href="#skills" onclick="showSection(event, 'skills')">Skills</a>
-    <a href="#contact" onclick="showSection(event, 'contact')">Contact</a>
+  <nav>
+    <div class="nav-inner">
+      <a href="#about" class="active" onclick="navigate(event, 'about')">ABOUT</a>
+      <a href="#expertise" onclick="navigate(event, 'expertise')">EXPERTISE</a>
+      <a href="#work" onclick="navigate(event, 'work')">STUDIES</a>
+      <a href="#contact" onclick="navigate(event, 'contact')">CONTACT</a>
+    </div>
   </nav>
 
-  <section id="home" class="active">
-    <h2>Welcome</h2>
-    <p>I build clean, logical, and user-centered digital experiences. Based in the Philippines, I'm currently focused on bridging the gap between technical efficiency and intuitive design.</p>
-    <div class="btn-group">
-      <a href="#projects" class="primary-btn" onclick="showSection(event, 'projects')">View My Work</a>
-      <a href="cv.pdf" download class="cv-btn">Download CV</a>
+  <header>
+    <h1>Anthony <span>Espinosa</span></h1>
+    <p style="color: var(--dim); text-transform: uppercase; letter-spacing: 3px; font-weight: 600; font-size: 0.75rem;">Information Technology Student // Philippines</p>
+  </header>
+
+  <section id="about" class="active">
+    <div class="card">
+      <h2>The Objective</h2>
+      <p>I am a student currently building a foundation in Information Technology.   <strong></strong> <strong></strong>. I believe that professional code isn't just about functionality, but also about simplicity and reliability.</p>
     </div>
   </section>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>I am an IT student with a passion for full-stack development. I believe that great software is born at the intersection of technical logic and human experience.</p>
-  </section>
-
-  <section id="projects">
-    <h2>Featured Work</h2>
-    <div class="grid">
-      <div class="item-card">
-        <div style="background:#1f2937; height:180px; border-radius:14px; margin-bottom:20px; display:flex; align-items:center; justify-content:center;">
-            <span>Project A Image</span>
+  <section id="expertise">
+    <h2>Current Focus</h2>
+    <div class="bento-grid">
+      <div class="card">
+        <h3>Programming</h3>
+        <p>Mastering core logic and structured development.</p>
+        <div class="skills-container">
+          <div class="skill">JAVA</div>
+          
+          <div class="skill">HTML5/CSS3</div>
         </div>
-        <h3>Jersey Layout Engine</h3>
-        <p>A specialized configuration tool for apparel design.</p>
       </div>
-      <div class="item-card">
-        <div style="background:#1f2937; height:180px; border-radius:14px; margin-bottom:20px; display:flex; align-items:center; justify-content:center;">
-            <span>Project B Image</span>
+      <div class="card">
+        <h3>Design Systems</h3>
+          <div class="skills-container">
+          <div class="skill">FIGMA</div>
+          
         </div>
-        <h3>Logic Engine</h3>
-        <p>JS utilities designed to automate data workflows.</p>
       </div>
     </div>
   </section>
 
-  <section id="skills">
-    <h2>Technical Stack</h2>
-    <div class="grid">
-      <div class="item-card">
-        <h3>Languages</h3>
-        <p>HTML5, Java, JavaScript (ES6+)</p>
+  <section id="work">
+    <h2>Academic Milestones</h2>
+    <div class="bento-grid">
+      <div class="card">
+        <h3>Logic Lab</h3>
+        <p>Researching and practicing algorithm efficiency using Java and JavaScript environments.</p>
       </div>
-      <div class="item-card">
-        <h3>Design</h3>
-        <p>Figma, UI/UX Strategy, Minimalist Design</p>
+      <div class="card">
+        <h3>Interface Development</h3>
+        <p>Constructing responsive, high-performance web structures for personal academic review.</p>
       </div>
     </div>
   </section>
 
   <section id="contact">
-    <h2>Let's Connect</h2>
-    <div style="display: flex; flex-direction: column; gap: 15px;">
-      <a href="mailto:espinosaanthony50@gmail.com" style="color:var(--accent); text-decoration:none;">📧 espinosaanthony50@gmail.com</a>
-      <a href="#" style="color:var(--accent); text-decoration:none;">👤 Anthony Espinosa (Facebook)</a>
+    <div class="card" style="text-align: center;">
+      <h2>Let's Connect</h2>
+      <p style="margin-bottom: 20px;">Open for academic collaboration and technical discussions.</p>
+      <a href="mailto:espinosaanthony50@gmail.com" style="color: var(--accent); text-decoration: none; font-weight: 800; font-size: 1.2rem;">espinosaanthony50@gmail.com</a>
     </div>
   </section>
 
-  <div class="chatbot">
-    <div class="chat-header">SYSTEM ASSISTANT // ACTIVE</div>
-    <div class="chat-body" id="chatBody">
-      <p><span style="color:var(--accent)">[Bot]:</span> Hello. Ask me about Anthony's skills or projects.</p>
+  <div class="chat-widget">
+    <div class="chat-header">
+      <div class="status"></div>
+      VIRTUAL ASSISTANT // ONLINE
     </div>
-    <input type="text" id="chatInput" placeholder="Type a command..." onkeypress="handleChat(event)">
+    <div class="chat-body" id="chatBody">
+      <div class="bubble bot">Welcome. How can I assist you with Anthony's portfolio today?</div>
+    </div>
+    <input type="text" id="chatInput" placeholder="Ask about 'skills' or 'studies'..." onkeypress="handleChat(event)">
   </div>
 
   <footer>
-    <p>&copy; 2026 Anthony Espinosa // Built for Performance.</p>
+    &copy; 2026 ANTHONY ESPINOSA // DEVELOPING WITH PURPOSE
   </footer>
 
   <script>
-    function showSection(event, sectionId) {
-      if(event) event.preventDefault();
+    // Professional Navigation Logic
+    function navigate(event, id) {
+      event.preventDefault();
+      document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
       
-      // Hide all sections
-      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
-      // Remove active class from all links
-      document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
-
-      const target = document.getElementById(sectionId);
-      if(target) {
-        target.classList.add('active');
-        // Add active class to clicked link
-        const activeLink = document.querySelector(`nav a[href="#${sectionId}"]`);
-        if (activeLink) activeLink.classList.add('active');
-        
-        // Scroll to top of section
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
+      document.getElementById(id).classList.add('active');
+      event.currentTarget.classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    const botResponses = {
-      skills: "Anthony is proficient in HTML5, Java, and JavaScript, with specialized skills in UI/UX Design.",
-      projects: "He has developed a Jersey Layout Engine and custom Logic Engines.",
-      contact: "Email him at espinosaanthony50@gmail.com.",
-      hi: "Hello! How can I help you today?"
-    };
-
-    function handleChat(event) {
-      if (event.key === 'Enter') {
+    // Interactive Chatbot Logic
+    function handleChat(e) {
+      if (e.key === 'Enter') {
         const input = document.getElementById('chatInput');
-        const chatBody = document.getElementById('chatBody');
-        const val = input.value.trim().toLowerCase();
+        const body = document.getElementById('chatBody');
+        const query = input.value.trim().toLowerCase();
 
-        if (val) {
-          chatBody.innerHTML += `<p><span style="color:#fff">[You]:</span> ${val}</p>`;
+        if (query) {
+          body.innerHTML += `<div class="bubble user">${query}</div>`;
           
-          let response = "Try asking about 'skills', 'projects', or 'contact'.";
-          if(val.includes("skill")) response = botResponses.skills;
-          else if(val.includes("project")) response = botResponses.projects;
-          else if(val.includes("contact")) response = botResponses.contact;
-          else if(val.includes("hi") || val.includes("hello")) response = botResponses.hi;
+          let response = "I don't have information on that specific query. Please try asking about 'skills', 'studies', or 'contact'.";
           
+          if (query.includes("skill") || query.includes("focus")) {
+            response = "Anthony is focused on Java, JavaScript, and UI Design via Figma.";
+          } else if (query.includes("study") || query.includes("work")) {
+            response = "Anthony is currently documenting his academic progress in algorithm logic and web architecture.";
+          } else if (query.includes("contact") || query.includes("email")) {
+            response = "Official correspondence can be sent to espinosaanthony50@gmail.com.";
+          } else if (query.includes("hi") || query.includes("hello")) {
+            response = "Hello. I am here to provide details on Anthony's technical journey.";
+          }
+
           setTimeout(() => {
-            chatBody.innerHTML += `<p><span style="color:var(--accent)">[Bot]:</span> ${response}</p>`;
-            chatBody.scrollTop = chatBody.scrollHeight;
-          }, 300);
+            body.innerHTML += `<div class="bubble bot">${response}</div>`;
+            body.scrollTop = body.scrollHeight;
+          }, 450);
 
           input.value = "";
         }
       }
     }
-
-    // Initial load
-    window.addEventListener('load', () => {
-      const hash = window.location.hash.substring(1) || 'home';
-      showSection(null, hash);
-    });
   </script>
 </body>
 </html>
