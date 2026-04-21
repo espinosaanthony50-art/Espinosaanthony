@@ -322,8 +322,8 @@
     <header>
         <h1 class="main-title">ANTHONY ESPINOSA</h1>
         <p style="color: var(--text-dim); letter-spacing: 2px; font-weight: 300;">STRATEGIC GRAPHICS DESIGNER | IT PROFESSIONAL</p>
-        <button class="btn-cv" onclick="downloadCV()">
-            <i class="fas fa-arrow-down-long">https://canva.link/92nan5eqndbjrs6</i> DOWNLOAD CV
+        <button class="btn-cv" onclick="window.open('https://canva.link/92nan5eqndbjrs6', '_blank')">
+            <i class="fas fa-file-pdf"></i> VIEW / DOWNLOAD CV
         </button>
     </header>
 
@@ -403,6 +403,7 @@
                 <a href="mailto:espinosaanthony50@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
                 <a href="https://www.facebook.com/anthony.ortegaespinosa.1" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://www.instagram.com/toni_2high" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.figma.com" target="_blank" title="Figma"><i class="fab fa-figma"></i></a>
                 <a href="https://github.com" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
             </div>
         </div>
@@ -435,18 +436,6 @@
     </div>
 
     <script>
-        function downloadCV() {
-            const cvContent = "Anthony Espinosa\nGraphics Designer & IT Professional\n\nExperience:\n- Ginyard International (Product Design Manager)\n- Arowwai Industries (Product Design Manager)\n\nEducation:\n- BS Information Technology (CPSU)\n\nSkills:\n- Adobe Creative Suite\n- SEO Marketing\n- 3D Modeling\n- Cyber Security";
-            const blob = new Blob([cvContent], { type: 'text/plain' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'Anthony_Espinosa_CV.txt';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        }
-
         function toggleChat() {
             const chat = document.getElementById('chat-widget');
             chat.style.display = (chat.style.display === 'flex') ? 'none' : 'flex';
@@ -478,7 +467,7 @@
                 } else if (msg.includes('skill') || msg.includes('design')) {
                     response = "He is an expert in Adobe Creative Suite, brand systems, SEO marketing, and technical 3D modeling.";
                 } else if (msg.includes('education') || msg.includes('college') || msg.includes('university')) {
-                    response = "Anthony holds a Bachelor of Information Technology from Central Philippine State University (2014-2017).";
+                    response = "Anthony holds a Bachelor of Information Technology from Central Philippine State University.";
                 } else if (msg.includes('contact') || msg.includes('email') || msg.includes('phone')) {
                     response = "Reach Anthony at 09815600546 or espinosaanthony50@gmail.com.";
                 } else if (msg.includes('3d') || msg.includes('hoopshot')) {
