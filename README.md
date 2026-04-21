@@ -212,12 +212,119 @@
             transform: translateY(-5px);
         }
 
+        /* --- CHAT BOT STYLES --- */
+        #chat-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 2000;
+            font-family: 'Inter', sans-serif;
+        }
+
+        #chat-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--text-main);
+            color: var(--bg-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            transition: var(--transition);
+        }
+
+        #chat-button:hover {
+            transform: scale(1.1);
+        }
+
+        #chat-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 320px;
+            height: 450px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        #chat-header {
+            padding: 20px;
+            background: #1a1a1a;
+            border-bottom: 1px solid var(--border);
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .msg {
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .bot-msg {
+            background: var(--border);
+            color: var(--text-main);
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+        }
+
+        .user-msg {
+            background: var(--text-main);
+            color: var(--bg-dark);
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+        }
+
+        #chat-input-area {
+            padding: 15px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            gap: 10px;
+        }
+
+        #chat-input {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #fff;
+            outline: none;
+            font-size: 0.85rem;
+        }
+
+        #send-btn {
+            color: var(--text-main);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
         /* --- RESPONSIVE --- */
         @media (max-width: 750px) {
             .about-grid { gap: 30px !important; }
             header { padding: 100px 20px 60px; }
             section { padding: 80px 20px; }
             nav { gap: 15px; }
+            #chat-window { width: 280px; right: -10px; }
         }
     </style>
 </head>
@@ -318,6 +425,74 @@
         </div>
     </section>
 
+    <div id="chat-widget">
+        <div id="chat-window">
+            <div id="chat-header">
+                <span>AE Assistant</span>
+                <i class="fas fa-times" style="cursor:pointer" onclick="toggleChat()"></i>
+            </div>
+            <div id="chat-messages">
+                <div class="msg bot-msg">Hi! I'm Anthony's virtual assistant. How can I help you today?</div>
+            </div>
+            <div id="chat-input-area">
+                <input type="text" id="chat-input" placeholder="Type a message...">
+                <i class="fas fa-paper-plane" id="send-btn" onclick="sendMessage()"></i>
+            </div>
+        </div>
+        <div id="chat-button" onclick="toggleChat()">
+            <i class="fas fa-comment-dots"></i>
+        </div>
+    </div>
+
+    <script>
+        function toggleChat() {
+            const chatWindow = document.getElementById('chat-window');
+            chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chat-input');
+            const container = document.getElementById('chat-messages');
+            
+            if (input.value.trim() !== "") {
+                // User Message
+                const userDiv = document.createElement('div');
+                userDiv.className = 'msg user-msg';
+                userDiv.textContent = input.value;
+                container.appendChild(userDiv);
+
+                const userText = input.value.toLowerCase();
+                input.value = "";
+
+                // Scroll to bottom
+                container.scrollTop = container.scrollHeight;
+
+                // Simple Bot Response Logic
+                setTimeout(() => {
+                    const botDiv = document.createElement('div');
+                    botDiv.className = 'msg bot-msg';
+                    
+                    if(userText.includes("hello") || userText.includes("hi")) {
+                        botDiv.textContent = "Hello! I can help you find Anthony's contact info or explain his projects.";
+                    } else if(userText.includes("contact") || userText.includes("email")) {
+                        botDiv.textContent = "You can reach Anthony directly at espinosaanthony50@gmail.com.";
+                    } else if(userText.includes("project") || userText.includes("skill")) {
+                        botDiv.textContent = "Anthony specializes in UI/UX Design, T-shirt layout, and Technical IT solutions.";
+                    } else {
+                        botDiv.textContent = "Thanks for the message! Feel free to explore the portfolio sections above.";
+                    }
+                    
+                    container.appendChild(botDiv);
+                    container.scrollTop = container.scrollHeight;
+                }, 800);
+            }
+        }
+
+        // Allow "Enter" key to send
+        document.getElementById('chat-input').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') sendMessage();
+        });
+    </script>
+
 </body>
 </html>
-
