@@ -11,7 +11,7 @@
             --bg-card: #141414;
             --text-main: #f5f5f5;
             --text-dim: #999999; 
-            --accent: #ffffff;
+            --accent: #ffffff; 
             --border: #222222;
             --nav-height: 70px;
             --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
