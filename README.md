@@ -150,93 +150,147 @@
             text-transform: uppercase;
         }
 
-        /* --- CHATBOT UI --- */
+        /* --- UPGRADED CHATBOT UI --- */
         #chat-widget {
             position: fixed;
-            bottom: 90px;
-            right: 25px;
-            width: 320px;
-            height: 450px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 20px;
+            bottom: 100px;
+            right: 30px;
+            width: 350px;
+            height: 500px;
+            background: rgba(20, 20, 20, 0.8);
+            backdrop-filter: blur(25px) saturate(150%);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
             display: none;
             flex-direction: column;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-            z-index: 2000;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+            z-index: 2100;
             overflow: hidden;
+            animation: chatSlide 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes chatSlide {
+            from { opacity: 0; transform: translateY(20px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         #chat-header {
-            padding: 15px 20px;
-            background: #1a1a1a;
-            border-bottom: 1px solid var(--border);
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
+        .bot-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: #00ff88;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #00ff88;
+        }
+
         #chat-messages {
             flex: 1;
-            padding: 15px;
+            padding: 20px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--border) transparent;
         }
 
         .msg {
             max-width: 85%;
-            padding: 10px 14px;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            line-height: 1.4;
-            animation: fadeIn 0.3s ease;
+            padding: 12px 16px;
+            border-radius: 18px;
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
 
-        .bot { background: var(--border); color: var(--text-main); align-self: flex-start; border-bottom-left-radius: 2px; }
-        .user { background: var(--accent); color: var(--bg-dark); align-self: flex-end; border-bottom-right-radius: 2px; font-weight: 500; }
+        .bot { 
+            background: rgba(255, 255, 255, 0.08); 
+            color: #fff; 
+            align-self: flex-start; 
+            border-bottom-left-radius: 4px;
+        }
+
+        .user { 
+            background: #fff; 
+            color: #000; 
+            align-self: flex-end; 
+            border-bottom-right-radius: 4px; 
+            font-weight: 500;
+        }
 
         #chat-input-area {
-            padding: 15px;
-            border-top: 1px solid var(--border);
+            padding: 20px;
+            background: rgba(0,0,0,0.2);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
             display: flex;
-            gap: 10px;
+            gap: 12px;
+            align-items: center;
         }
 
         #chat-input {
             flex: 1;
-            background: transparent;
-            border: none;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 10px 15px;
             color: white;
             outline: none;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
+            transition: var(--transition);
         }
+
+        #chat-input:focus { border-color: rgba(255, 255, 255, 0.3); }
 
         #chat-trigger {
             position: fixed;
-            bottom: 25px;
-            right: 25px;
-            background: var(--accent);
-            color: var(--bg-dark);
-            width: 55px;
-            height: 55px;
+            bottom: 30px;
+            right: 30px;
+            background: #fff;
+            color: #000;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             cursor: pointer;
-            z-index: 1999;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            z-index: 2000;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             transition: var(--transition);
         }
 
-        #chat-trigger:hover { transform: scale(1.1) rotate(5deg); }
+        #chat-trigger:hover { transform: scale(1.1); }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        .pulse {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            animation: pulse-ring 2s infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
 
         @media (max-width: 600px) {
-            #chat-widget { width: calc(100% - 50px); bottom: 85px; }
+            #chat-widget { width: calc(100% - 40px); bottom: 100px; right: 20px; }
             .grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -246,7 +300,6 @@
     <header>
         <h1 class="main-title">ANTHONY ESPINOSA</h1>
         <p style="color: var(--text-dim); letter-spacing: 2px; font-weight: 300;">STRATEGIC GRAPHICS DESIGNER | IT PROFESSIONAL</p>
-        
         <a href="Professional Minimalist CV Resume.jpg" class="btn-cv" download="Anthony_Espinosa_CV.jpg">
             <i class="fas fa-file-download"></i> DOWNLOAD CV
         </a>
@@ -323,56 +376,66 @@
         </div>
     </section>
 
-    <div id="chat-trigger" onclick="toggleChat()"><i class="fas fa-robot"></i></div>
+    <div id="chat-trigger" onclick="toggleChat()">
+        <div class="pulse"></div>
+        <i class="fas fa-comment-alt"></i>
+    </div>
+
     <div id="chat-widget">
         <div id="chat-header">
-            <span style="font-weight: 800; font-size: 0.7rem; letter-spacing: 1px;">AE ASSISTANT</span>
+            <div class="bot-status">
+                <div class="status-dot"></div>
+                <div>
+                    <div style="font-weight: 800; font-size: 0.75rem; letter-spacing: 1px;">ANTHONY AI</div>
+                    <div style="font-size: 0.6rem; color: #00ff88; text-transform: uppercase;">Always Online</div>
+                </div>
+            </div>
             <i class="fas fa-times" onclick="toggleChat()" style="cursor:pointer; opacity: 0.5;"></i>
         </div>
-        <div id="chat-messages" id="chatMessages">
-            <div class="msg bot">Hi! I'm Anthony's assistant. You can ask me about his IT skills, Figma projects, or how to contact him!</div>
+        <div id="chat-messages">
+            <div class="msg bot">Hello! I'm Anthony's personal AI assistant. How can I help you today?</div>
         </div>
         <div id="chat-input-area">
-            <input type="text" id="chat-input" placeholder="Ask me something..." onkeypress="if(event.key==='Enter') handleChat()">
-            <i class="fas fa-paper-plane" onclick="handleChat()" style="cursor:pointer; color: var(--text-dim);"></i>
+            <input type="text" id="chat-input" placeholder="Ask about skills, Figma, or contact..." onkeypress="if(event.key==='Enter') handleChat()">
+            <button onclick="handleChat()" style="background: none; border: none; cursor: pointer; color: #fff;">
+                <i class="fas fa-paper-plane"></i>
+            </button>
         </div>
     </div>
 
     <script>
         function toggleChat() {
             const chat = document.getElementById('chat-widget');
-            chat.style.display = (chat.style.display === 'flex') ? 'none' : 'flex';
+            const isVisible = chat.style.display === 'flex';
+            chat.style.display = isVisible ? 'none' : 'flex';
         }
 
         function handleChat() {
             const input = document.getElementById('chat-input');
-            const messages = document.getElementById('chat-messages');
             const text = input.value.trim();
 
             if (text) {
-                // Add User Message
                 appendMsg(text, 'user');
                 input.value = '';
 
-                // Bot Logic
                 setTimeout(() => {
                     const query = text.toLowerCase();
-                    let reply = "I'm not sure about that, but Anthony is a great IT professional! Would you like his email?";
+                    let reply = "I'm Anthony's AI. I can tell you about his IT skills, Figma designs, or how to hire him!";
 
                     if (query.includes('skill') || query.includes('can do')) {
-                        reply = "Anthony specializes in UI/UX Design (Figma), Graphic Layout, 3D Modeling, and Web Development.";
+                        reply = "Anthony is an IT Professional skilled in UI/UX Design (Figma), Graphic Layout, 3D Modeling, and Modern Web Development.";
                     } else if (query.includes('figma') || query.includes('design')) {
-                        reply = "You can see his latest UI project by clicking the Figma card in the Skills section!";
-                    } else if (query.includes('contact') || query.includes('email')) {
-                        reply = "You can reach Anthony at: espinosaanthony50@gmail.com. He usually responds within 24 hours.";
+                        reply = "Check out his Figma Prototype in the Skills section! He specializes in creating intuitive and strategic digital layouts.";
+                    } else if (query.includes('contact') || query.includes('email') || query.includes('hire')) {
+                        reply = "You can contact Anthony at espinosaanthony50@gmail.com. He's always open to new collaborations!";
+                    } else if (query.includes('mern') || query.includes('react') || query.includes('stack')) {
+                        reply = "Anthony is deeply interested in the MERN stack (MongoDB, Express, React, Node.js) for building scalable web applications.";
                     } else if (query.includes('hello') || query.includes('hi')) {
-                        reply = "Hello! Ready to learn more about Anthony's professional background?";
-                    } else if (query.includes('mern')) {
-                        reply = "Yes! Anthony is highly interested in the MERN stack (MongoDB, Express, React, Node.js).";
+                        reply = "Hi there! I can help you navigate Anthony's portfolio. What would you like to know?";
                     }
 
                     appendMsg(reply, 'bot');
-                }, 700);
+                }, 600);
             }
         }
 
