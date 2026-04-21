@@ -212,6 +212,15 @@
             color: var(--text-dim);
         }
 
+        .social-icons a {
+            color: var(--text-main);
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--text-dim);
+        }
+
         /* --- RESPONSIVE --- */
         @media (max-width: 600px) {
             .main-title { font-size: 2rem; }
@@ -290,10 +299,12 @@
         <div class="contact-info">
             <p>Ready to collaborate or hire?</p>
             <p style="margin-top:20px;">Email: anthony.espinosa@example.com</p>
-            <div style="margin-top: 20px; font-size: 2rem; display: flex; justify-content: center; gap: 30px;">
-                <i class="fab fa-github"></i>
-                <i class="fab fa-linkedin"></i>
-                <i class="fas fa-envelope"></i>
+            <div class="social-icons" style="margin-top: 20px; font-size: 2rem; display: flex; justify-content: center; gap: 30px;">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:anthony.espinosa@example.com"><i class="fas fa-envelope"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
     </section>
@@ -305,7 +316,7 @@
             <span onclick="toggleChat()" style="cursor:pointer">×</span>
         </div>
         <div id="chat-messages">
-            <div class="msg bot">Hi! I'm Anthony's AI. Ask me about his skills, certificates, or projects!</div>
+            <div class="msg bot">Hi! I'm Anthony's AI. Ask me about his skills, certificates, or how to contact him!</div>
         </div>
         <div id="chat-input-area">
             <input type="text" id="chat-input" placeholder="Type a message..." onkeypress="handleChat(event)">
@@ -315,8 +326,6 @@
     <script>
         // --- DOWNLOAD CV LOGIC ---
         function downloadCV() {
-            // This creates a fake text file for demonstration. 
-            // In reality, you would link to your PDF file.
             const cvContent = "Anthony Espinosa CV\nIT Professional\nSkills: Web Dev, 3D Modeling, Cyber Security.";
             const blob = new Blob([cvContent], { type: 'text/plain' });
             const url = window.URL.createObjectURL(blob);
@@ -342,7 +351,7 @@
                 input.value = '';
 
                 setTimeout(() => {
-                    let response = "I'm not sure about that. Try asking about 'skills', 'hoopshot', or 'certificates'!";
+                    let response = "I'm not sure about that. Try asking about 'skills', 'contact', or 'certificates'!";
                     
                     if (msg.includes('skill') || msg.includes('do')) {
                         response = "Anthony is skilled in T-shirt layout, image editing, and Game Simulation in GitHub.";
@@ -352,6 +361,8 @@
                         response = "He designed and built a 'Hoopshot Vendo Machine' using 3D modeling and physical construction.";
                     } else if (msg.includes('who') || msg.includes('about')) {
                         response = "Anthony is an IT professional focused on technical efficiency and user experience.";
+                    } else if (msg.includes('contact') || msg.includes('email') || msg.includes('facebook') || msg.includes('insta') || msg.includes('gmail')) {
+                        response = "You can reach Anthony via Email (anthony.espinosa@example.com), Facebook, Instagram, or GitHub. Check the Contact section for links!";
                     }
                     
                     appendMessage(response, 'bot');
@@ -362,7 +373,7 @@
         function appendMessage(text, sender) {
             const container = document.getElementById('chat-messages');
             const div = document.createElement('div');
-            div.className = msg ${sender};
+            div.className = `msg ${sender}`;
             div.innerText = text;
             container.appendChild(div);
             container.scrollTop = container.scrollHeight;
