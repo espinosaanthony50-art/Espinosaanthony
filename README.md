@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+no<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -254,7 +254,7 @@
     <section id="skills">
         <h2>SKILLS & PROJECTS</h2>
         <div class="grid">
-            <a href="https://www.figma.com/proto/eRh04x0LxszeTEFdyA1lXW/Untitled?node-id=1-2&starting-point-node-id=1%3A2&t=nhirCu9Rl8hta5ke-1" class="card">
+            <a href="(https://www.figma.com/proto/eRh04x0LxszeTEFdyA1lXW/Untitled?node-id=1-14&starting-point-node-id=1%3A2&t=hTkYviMs08iQDl4m-1)" class="card">
                 <div style="height: 280px; background: #1e1e1e; display: flex; align-items: center; justify-content: center;">
                     <i class="fab fa-figma" style="font-size: 5rem; color: #F24E1E;"></i>
                 </div>
