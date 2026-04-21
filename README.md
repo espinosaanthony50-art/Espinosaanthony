@@ -255,7 +255,7 @@
     <section id="skills">
         <h2>SKILLS & PROJECTS</h2>
         <div class="grid">
-            <a href="https://www.figma.com/proto/eRh04x0LxszeTEFdyA1lXW/Untitled?node-id=1-14&starting-point-node-id=1%3A2&t=hTkYviMs08iQDl4m-1" target="_blank" rel="noopener noreferrer" class="card">
+            <a href="(https://www.figma.com/proto/eRh04x0LxszeTEFdyA1lXW/Untitled?node-id=1-14&starting-point-node-id=1%3A2&t=hTkYviMs08iQDl4m-1)" target="_blank" rel="noopener noreferrer" class="card">
                 <div style="height: 280px; background: #1e1e1e; display: flex; align-items: center; justify-content: center;">
                     <i class="fab fa-figma" style="font-size: 5rem; color: #F24E1E;"></i>
                 </div>
