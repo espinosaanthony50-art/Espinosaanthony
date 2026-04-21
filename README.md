@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -144,8 +144,8 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            width: 300px;
-            height: 400px;
+            width: 320px;
+            height: 450px;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 15px;
@@ -171,9 +171,34 @@
             font-size: 0.85rem;
         }
 
-        .msg { margin-bottom: 10px; padding: 8px; border-radius: 5px; }
-        .bot { background: var(--border); color: var(--text-main); text-align: left; }
-        .user { background: var(--text-main); color: var(--bg-dark); text-align: right; }
+        .msg { margin-bottom: 10px; padding: 10px; border-radius: 8px; max-width: 85%; }
+        .bot { background: var(--border); color: var(--text-main); align-self: flex-start; }
+        .user { background: var(--text-main); color: var(--bg-dark); align-self: flex-end; margin-left: auto; }
+
+        /* Quick Action Buttons */
+        .chat-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            padding: 10px;
+            border-top: 1px solid var(--border);
+        }
+
+        .opt-btn {
+            background: transparent;
+            border: 1px solid var(--text-dim);
+            color: var(--text-dim);
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .opt-btn:hover {
+            border-color: var(--text-main);
+            color: var(--text-main);
+        }
 
         #chat-input-area {
             display: flex;
@@ -203,6 +228,7 @@
             align-items: center;
             cursor: pointer;
             z-index: 1999;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
         /* --- CONTACT --- */
@@ -228,6 +254,7 @@
             .main-title { font-size: 2rem; }
             nav { gap: 10px; flex-wrap: wrap; }
             nav a { font-size: 0.7rem; }
+            #chat-widget { width: 90%; right: 5%; bottom: 90px; }
         }
     </style>
 </head>
@@ -312,14 +339,23 @@
     </section>
 
     <div id="chat-trigger" onclick="toggleChat()"><i class="fas fa-comments"></i></div>
+    
     <div id="chat-widget">
         <div id="chat-header">
             <span>Anthony's Assistant</span>
             <span onclick="toggleChat()" style="cursor:pointer">×</span>
         </div>
         <div id="chat-messages">
-            <div class="msg bot">Hi! I'm Anthony's AI. Ask me about his skills, certificates, or social media!</div>
+            <div class="msg bot">Hi! I'm Anthony's AI. How can I help you today?</div>
         </div>
+        
+        <div class="chat-options">
+            <button class="opt-btn" onclick="handleQuickAction('Skills')">Skills</button>
+            <button class="opt-btn" onclick="handleQuickAction('Certificates')">Certificates</button>
+            <button class="opt-btn" onclick="handleQuickAction('Contact')">Contact</button>
+            <button class="opt-btn" onclick="handleQuickAction('3D Projects')">3D Projects</button>
+        </div>
+
         <div id="chat-input-area">
             <input type="text" id="chat-input" placeholder="Type a message..." onkeypress="handleChat(event)">
         </div>
@@ -341,44 +377,53 @@
             chat.style.display = (chat.style.display === 'flex') ? 'none' : 'flex';
         }
 
+        // FUNCTION: Handle clicking a button
+        function handleQuickAction(action) {
+            processChat(action);
+        }
+
+        // FUNCTION: Handle pressing Enter
         function handleChat(e) {
             if (e.key === 'Enter') {
                 const input = document.getElementById('chat-input');
-                const msg = input.value.toLowerCase();
-                if (!msg) return;
-
-                appendMessage(input.value, 'user');
+                const text = input.value;
+                if (!text) return;
                 input.value = '';
-
-                setTimeout(() => {
-                    let response = "I'm not sure about that. Try asking about 'skills', 'hoopshot', or 'contact'!";
-                    
-                    if (msg.includes('skill') || msg.includes('do')) {
-                        response = "Anthony is skilled in T-shirt layout, image editing, and Game Simulation in GitHub.";
-                    } else if (msg.includes('certif') || msg.includes('cyber')) {
-                        response = "Anthony holds a certificate in Cyber Security completion.";
-                    } else if (msg.includes('hoopshot') || msg.includes('3d')) {
-                        response = "He designed and built a 'Hoopshot Vendo Machine' using 3D modeling and physical construction.";
-                    } else if (msg.includes('who') || msg.includes('about')) {
-                        response = "Anthony is an IT professional focused on technical efficiency and user experience.";
-                    } else if (msg.includes('gmail') || msg.includes('email') || msg.includes('contact')) {
-                        response = "You can email Anthony at anthony.espinosa@example.com.";
-                    } else if (msg.includes('fb') || msg.includes('facebook') || msg.includes('insta') || msg.includes('social')) {
-                        response = "Anthony is active on Facebook and Instagram. Check the links in the Contact section!";
-                    }
-                    
-                    appendMessage(response, 'bot');
-                }, 600);
+                processChat(text);
             }
+        }
+
+        // FUNCTION: Core logic for responses
+        function processChat(userInput) {
+            appendMessage(userInput, 'user');
+            
+            const msg = userInput.toLowerCase();
+            setTimeout(() => {
+                let response = "I'm not sure about that. Try one of the buttons above!";
+                
+                if (msg.includes('skill') || msg.includes('do')) {
+                    response = "Anthony is skilled in T-shirt layout, image editing, and Game Simulation in GitHub.";
+                } else if (msg.includes('certif') || msg.includes('cyber')) {
+                    response = "Anthony holds a certificate in Cyber Security completion.";
+                } else if (msg.includes('hoopshot') || msg.includes('3d') || msg.includes('vendo')) {
+                    response = "He designed and built a 'Hoopshot Vendo Machine' using 3D modeling and physical construction.";
+                } else if (msg.includes('contact') || msg.includes('email') || msg.includes('gmail') || msg.includes('social') || msg.includes('fb')) {
+                    response = "You can contact Anthony at anthony.espinosa@example.com or find his social links in the contact section!";
+                } else if (msg.includes('who') || msg.includes('about')) {
+                    response = "Anthony is an aspiring IT professional specializing in systems and user experience.";
+                }
+                
+                appendMessage(response, 'bot');
+            }, 600);
         }
 
         function appendMessage(text, sender) {
             const container = document.getElementById('chat-messages');
             const div = document.createElement('div');
-            // Fixed the template literal syntax here
             div.className = `msg ${sender}`;
             div.innerText = text;
             container.appendChild(div);
+            // Auto-scroll to bottom
             container.scrollTop = container.scrollHeight;
         }
     </script>
