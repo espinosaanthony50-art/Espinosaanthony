@@ -344,7 +344,6 @@
         <h2>Contact</h2>
         <div class="contact-info">
             <p>Ready to collaborate or hire?</p>
-            <p style="margin-top:20px;"></p>
             <div class="social-icons">
                 <a href="mailto:espinosaanthony50@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
                 <a href="https://www.facebook.com/anthony.ortegaespinosa.1" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
