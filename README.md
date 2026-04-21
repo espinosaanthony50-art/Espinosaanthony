@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -214,11 +214,13 @@
 
         .social-icons a {
             color: var(--text-main);
+            font-size: 2rem;
+            text-decoration: none;
             transition: color 0.3s;
         }
 
         .social-icons a:hover {
-            color: var(--text-dim);
+            color: var(--accent);
         }
 
         /* --- RESPONSIVE --- */
@@ -299,12 +301,12 @@
         <div class="contact-info">
             <p>Ready to collaborate or hire?</p>
             <p style="margin-top:20px;">Email: anthony.espinosa@example.com</p>
-            <div class="social-icons" style="margin-top: 20px; font-size: 2rem; display: flex; justify-content: center; gap: 30px;">
-                <a href="#"><i class="fab fa-github"></i></a>
-                <a href="#"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:anthony.espinosa@example.com"><i class="fas fa-envelope"></i></a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
+            <div class="social-icons" style="margin-top: 20px; display: flex; justify-content: center; gap: 30px;">
+                <a href="mailto:anthony.espinosa@example.com" title="Gmail"><i class="fas fa-envelope"></i></a>
+                <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
             </div>
         </div>
     </section>
@@ -316,7 +318,7 @@
             <span onclick="toggleChat()" style="cursor:pointer">×</span>
         </div>
         <div id="chat-messages">
-            <div class="msg bot">Hi! I'm Anthony's AI. Ask me about his skills, certificates, or how to contact him!</div>
+            <div class="msg bot">Hi! I'm Anthony's AI. Ask me about his skills, certificates, or social media!</div>
         </div>
         <div id="chat-input-area">
             <input type="text" id="chat-input" placeholder="Type a message..." onkeypress="handleChat(event)">
@@ -324,7 +326,6 @@
     </div>
 
     <script>
-        // --- DOWNLOAD CV LOGIC ---
         function downloadCV() {
             const cvContent = "Anthony Espinosa CV\nIT Professional\nSkills: Web Dev, 3D Modeling, Cyber Security.";
             const blob = new Blob([cvContent], { type: 'text/plain' });
@@ -335,7 +336,6 @@
             a.click();
         }
 
-        // --- CHATBOT LOGIC ---
         function toggleChat() {
             const chat = document.getElementById('chat-widget');
             chat.style.display = (chat.style.display === 'flex') ? 'none' : 'flex';
@@ -351,7 +351,7 @@
                 input.value = '';
 
                 setTimeout(() => {
-                    let response = "I'm not sure about that. Try asking about 'skills', 'contact', or 'certificates'!";
+                    let response = "I'm not sure about that. Try asking about 'skills', 'hoopshot', or 'contact'!";
                     
                     if (msg.includes('skill') || msg.includes('do')) {
                         response = "Anthony is skilled in T-shirt layout, image editing, and Game Simulation in GitHub.";
@@ -361,8 +361,10 @@
                         response = "He designed and built a 'Hoopshot Vendo Machine' using 3D modeling and physical construction.";
                     } else if (msg.includes('who') || msg.includes('about')) {
                         response = "Anthony is an IT professional focused on technical efficiency and user experience.";
-                    } else if (msg.includes('contact') || msg.includes('email') || msg.includes('facebook') || msg.includes('insta') || msg.includes('gmail')) {
-                        response = "You can reach Anthony via Email (anthony.espinosa@example.com), Facebook, Instagram, or GitHub. Check the Contact section for links!";
+                    } else if (msg.includes('gmail') || msg.includes('email') || msg.includes('contact')) {
+                        response = "You can email Anthony at anthony.espinosa@example.com.";
+                    } else if (msg.includes('fb') || msg.includes('facebook') || msg.includes('insta') || msg.includes('social')) {
+                        response = "Anthony is active on Facebook and Instagram. Check the links in the Contact section!";
                     }
                     
                     appendMessage(response, 'bot');
@@ -373,6 +375,7 @@
         function appendMessage(text, sender) {
             const container = document.getElementById('chat-messages');
             const div = document.createElement('div');
+            // Fixed the template literal syntax here
             div.className = `msg ${sender}`;
             div.innerText = text;
             container.appendChild(div);
