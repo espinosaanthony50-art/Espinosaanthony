@@ -14,6 +14,7 @@
             --text-dim: #b0b0b0;
             --accent: #e0e0e0;
             --border: #333333;
+            --nav-height: 60px;
         }
 
         * {
@@ -33,7 +34,7 @@
         /* --- HEADER & NAVIGATION --- */
         header {
             text-align: center;
-            padding: 60px 20px;
+            padding: 100px 20px 60px;
             background: linear-gradient(to bottom, #000, var(--bg-dark));
         }
 
@@ -56,6 +57,7 @@
             justify-content: center;
             padding: 15px;
             gap: 20px;
+            height: var(--nav-height);
         }
 
         nav a {
@@ -82,10 +84,12 @@
             font-weight: bold;
             border-radius: 5px;
             transition: transform 0.2s, background-color 0.2s;
+            cursor: pointer;
+            border: none;
         }
 
         .btn-cv:hover {
-            background-color: var(--text-dim);
+            background-color: var(--accent);
             transform: translateY(-2px);
         }
 
@@ -94,6 +98,8 @@
             max-width: 1000px;
             margin: 0 auto;
             padding: 80px 20px;
+            /* Prevents nav from covering title when jumping to ID */
+            scroll-margin-top: var(--nav-height);
         }
 
         h2 {
@@ -142,7 +148,7 @@
         /* --- CHATBOT UI --- */
         #chat-widget {
             position: fixed;
-            bottom: 20px;
+            bottom: 90px;
             right: 20px;
             width: 320px;
             height: 450px;
@@ -169,13 +175,14 @@
             padding: 15px;
             overflow-y: auto;
             font-size: 0.85rem;
+            display: flex;
+            flex-direction: column;
         }
 
-        .msg { margin-bottom: 10px; padding: 10px; border-radius: 8px; max-width: 85%; }
+        .msg { margin-bottom: 10px; padding: 10px; border-radius: 8px; max-width: 85%; word-wrap: break-word; }
         .bot { background: var(--border); color: var(--text-main); align-self: flex-start; }
-        .user { background: var(--text-main); color: var(--bg-dark); align-self: flex-end; margin-left: auto; }
+        .user { background: var(--text-main); color: var(--bg-dark); align-self: flex-end; }
 
-        /* Quick Action Buttons */
         .chat-options {
             display: flex;
             flex-wrap: wrap;
@@ -229,6 +236,7 @@
             cursor: pointer;
             z-index: 1999;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            font-size: 1.5rem;
         }
 
         /* --- CONTACT --- */
@@ -238,49 +246,59 @@
             color: var(--text-dim);
         }
 
+        .social-icons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
         .social-icons a {
             color: var(--text-main);
             font-size: 2rem;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: transform 0.3s, color 0.3s;
         }
 
         .social-icons a:hover {
             color: var(--accent);
+            transform: scale(1.1);
         }
 
         /* --- RESPONSIVE --- */
         @media (max-width: 600px) {
             .main-title { font-size: 2rem; }
-            nav { gap: 10px; flex-wrap: wrap; }
-            nav a { font-size: 0.7rem; }
+            .grid { grid-template-columns: 1fr; }
+            nav { gap: 10px; height: auto; padding: 10px; }
+            nav a { font-size: 0.75rem; }
             #chat-widget { width: 90%; right: 5%; bottom: 90px; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1 class="main-title">ANTHONY ESPINOSA</h1>
-        <p style="color: var(--text-dim);">Aspiring IT Professional | Systems & Design</p>
-        <a href="#" class="btn-cv" onclick="downloadCV()">
-            <i class="fas fa-download"></i> DOWNLOAD CV
-        </a>
-    </header>
-
     <nav>
-        <a href="#about">About Me</a>
+        <a href="#about">About</a>
         <a href="#skills">Skills</a>
         <a href="#certificates">Certificates</a>
         <a href="#contact">Contact</a>
     </nav>
 
+    <header>
+        <h1 class="main-title">ANTHONY ESPINOSA</h1>
+        <p style="color: var(--text-dim);">Aspiring IT Professional | Systems & Design</p>
+        <button class="btn-cv" onclick="downloadCV()">
+            <i class="fas fa-download"></i> DOWNLOAD CV
+        </button>
+    </header>
+
     <section id="about">
         <h2>About Me</h2>
-        <div class="grid" style="grid-template-columns: 1fr 1fr; align-items: center;">
-            <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/img_20260421_1341155322485705782540295.png?w=815" alt="Anthony Espinosa" style="width: 100%; border-radius: 10px;">
+        <div class="grid" style="align-items: center;">
+            <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/img_20260421_1341155322485705782540295.png?w=815" alt="Anthony Espinosa" style="width: 100%; border-radius: 10px; border: 1px solid var(--border);">
             <div>
                 <p>I am an aspiring IT Professional driven by how complex systems solve real-world problems. My focus is on bridging the gap between technical efficiency and user experience.</p>
+                <p style="margin-top: 15px; color: var(--text-dim);">Based in the Philippines, I specialize in creative technical solutions ranging from 3D modeling to cybersecurity.</p>
             </div>
         </div>
     </section>
@@ -292,21 +310,21 @@
                 <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/received_267360033126596614052547090387034825.jpeg?w=632" alt="Layout">
                 <div class="card-content">
                     <h3>Design & Layout</h3>
-                    <p>T-shirt sublimation layout and high-quality image editing.</p>
+                    <p>T-shirt sublimation layout and high-quality image editing using professional tools.</p>
                 </div>
             </div>
             <div class="card">
                 <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/received_14720831838393725292710248625092296.jpeg?w=683" alt="Dev">
                 <div class="card-content">
                     <h3>Game Simulation</h3>
-                    <p>Physics-based game development and simulation hosted on GitHub.</p>
+                    <p>Physics-based game development and logic simulations hosted on GitHub.</p>
                 </div>
             </div>
             <div class="card">
                 <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/received_16477739230848778504253922941591082.jpeg?w=768" alt="3D">
                 <div class="card-content">
                     <h3>3D Modeling</h3>
-                    <p>Hoopshot Vendo Machine: From 3D conceptual modeling to actual output.</p>
+                    <p>Hoopshot Vendo Machine: From 3D conceptual modeling to physical prototype output.</p>
                 </div>
             </div>
         </div>
@@ -318,7 +336,7 @@
             <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/received_9445525915134996693128524351569481.jpeg?w=716" alt="Cyber Security">
             <div class="card-content">
                 <h3>Cyber Security Completion</h3>
-                <p>Verified course completion in fundamental Cyber Security practices.</p>
+                <p>Verified course completion in fundamental Cyber Security practices and network defense.</p>
             </div>
         </div>
     </section>
@@ -327,22 +345,22 @@
         <h2>Contact</h2>
         <div class="contact-info">
             <p>Ready to collaborate or hire?</p>
-            <p style="margin-top:20px;">Email: anthony.espinosa@example.com</p>
-            <div class="social-icons" style="margin-top: 20px; display: flex; justify-content: center; gap: 30px;">
-                <a href="mailto:espinosaanthony50@gmail.com" title="Gmail"><i class="fas fa-envelope"></i></a>
-                <a href="https://www.facebook.com/anthony.ortegaespinosa.1" title="Anthony Espinosa"><i class="fab fa-instagram"></i></a>
-                <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.instagram.com%2F_u%2Ftoni_2high%3Figsh%3DMXFxcXVwc2Y5bXRpeQ%253D%253D%26fbclid%3DIwZXh0bgNhZW0CMTAAYnJpZBExOGZlQURQZkxYbVJBOVZCS3NydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR4UpsuBVQOo1vLhiOfZjZPEm0xYGNkuqXalocsoYTG50mS9F8KuuxSybE6KjQ_aem_MrAiJDoPq42jNRK3XPIIjw&h=AT7R1_UhOJeI1CbDlRp_Ns7fbQEpkj7El7kB0Ruu_WzNrrBRuw-P5Z6wt9gzAYbEGcMY_Kl74zLDYodkfY_PicKGv_ARbEX-yEwAlgEK27lkNKBXPx8rYz-LNrtYaQ8i" title="toni_2high"><i class="fab fa-github"></i></a>
-                <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <p style="margin-top:20px;">Email: espinosaanthony50@gmail.com</p>
+            <div class="social-icons">
+                <a href="mailto:espinosaanthony50@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.facebook.com/anthony.ortegaespinosa.1" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/toni_2high" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
             </div>
         </div>
     </section>
 
-    <div id="chat-trigger" onclick="toggleChat()"><i class="fas fa-comments"></i></div>
+    <div id="chat-trigger" onclick="toggleChat()"><i class="fas fa-comment-dots"></i></div>
     
     <div id="chat-widget">
         <div id="chat-header">
-            <span>Anthony's Assistant</span>
-            <span onclick="toggleChat()" style="cursor:pointer">×</span>
+            <strong>Anthony's Assistant</strong>
+            <span onclick="toggleChat()" style="cursor:pointer; font-size: 1.2rem;">&times;</span>
         </div>
         <div id="chat-messages">
             <div class="msg bot">Hi! I'm Anthony's AI. How can I help you today?</div>
@@ -368,7 +386,9 @@
             const a = document.createElement('a');
             a.href = url;
             a.download = 'Anthony_Espinosa_CV.txt';
+            document.body.appendChild(a);
             a.click();
+            document.body.removeChild(a);
         }
 
         function toggleChat() {
@@ -376,23 +396,20 @@
             chat.style.display = (chat.style.display === 'flex') ? 'none' : 'flex';
         }
 
-        // FUNCTION: Handle clicking a button
         function handleQuickAction(action) {
             processChat(action);
         }
 
-        // FUNCTION: Handle pressing Enter
         function handleChat(e) {
             if (e.key === 'Enter') {
                 const input = document.getElementById('chat-input');
-                const text = input.value;
+                const text = input.value.trim();
                 if (!text) return;
                 input.value = '';
                 processChat(text);
             }
         }
 
-        // FUNCTION: Core logic for responses
         function processChat(userInput) {
             appendMessage(userInput, 'user');
             
@@ -406,8 +423,8 @@
                     response = "Anthony holds a certificate in Cyber Security completion.";
                 } else if (msg.includes('hoopshot') || msg.includes('3d') || msg.includes('vendo')) {
                     response = "He designed and built a 'Hoopshot Vendo Machine' using 3D modeling and physical construction.";
-                } else if (msg.includes('contact') || msg.includes('email') || msg.includes('gmail') || msg.includes('social') || msg.includes('fb')) {
-                    response = "You can contact Anthony at anthony.espinosa@example.com or find his social links in the contact section!";
+                } else if (msg.includes('contact') || msg.includes('email') || msg.includes('gmail') || msg.includes('social')) {
+                    response = "You can contact Anthony at espinosaanthony50@gmail.com or find his social links in the contact section!";
                 } else if (msg.includes('who') || msg.includes('about')) {
                     response = "Anthony is an aspiring IT professional specializing in systems and user experience.";
                 }
@@ -422,7 +439,6 @@
             div.className = `msg ${sender}`;
             div.innerText = text;
             container.appendChild(div);
-            // Auto-scroll to bottom
             container.scrollTop = container.scrollHeight;
         }
     </script>
