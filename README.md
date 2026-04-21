@@ -253,8 +253,6 @@
             transition: var(--transition);
         }
 
-        #chat-input:focus { border-color: rgba(255, 255, 255, 0.3); }
-
         #chat-trigger {
             position: fixed;
             bottom: 30px;
@@ -273,8 +271,6 @@
             transition: var(--transition);
         }
 
-        #chat-trigger:hover { transform: scale(1.1); }
-
         .pulse {
             position: absolute;
             width: 100%;
@@ -287,11 +283,6 @@
         @keyframes pulse-ring {
             0% { transform: scale(0.8); opacity: 0.5; }
             100% { transform: scale(1.5); opacity: 0; }
-        }
-
-        @media (max-width: 600px) {
-            #chat-widget { width: calc(100% - 40px); bottom: 100px; right: 20px; }
-            .grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -317,7 +308,7 @@
         <div class="grid" style="align-items: center;">
             <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/img_20260421_1341155322485705782540295.png?w=815" alt="Anthony" style="width: 100%; border-radius: 20px;">
             <div>
-                <p style="font-size: 1.1rem; color: var(--text-dim);">I am an IT professional with a dual focus on <strong>Technical Architecture</strong> and <strong>Visual Design</strong>. My goal is to build digital experiences that are as efficient as they are beautiful.</p>
+                <p style="font-size: 1.1rem; color: var(--text-dim);">I am an IT student at Central Philippine State University, bridging the gap between technical efficiency and user experience. As an aspiring full-stack developer, I focus on building digital solutions that are both robust and visually engaging.</p>
             </div>
         </div>
     </section>
@@ -331,7 +322,7 @@
                 </div>
                 <div class="card-content">
                     <h3>UI/UX Design</h3>
-                    <p>Interface prototypes and design systems built for high-performance apps.</p>
+                    <p>Strategic interface prototypes and design systems built in Figma.</p>
                     <span class="figma-tag">View Figma Prototype <i class="fas fa-external-link-alt"></i></span>
                 </div>
             </a>
@@ -348,7 +339,7 @@
                 <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/received_14720831838393725292710248625092296.jpeg?w=683" alt="Dev">
                 <div class="card-content">
                     <h3>Technical IT</h3>
-                    <p>Physics-based game development and MERN stack interest.</p>
+                    <p>Development focus on the MERN stack and data workflow simulations.</p>
                 </div>
             </div>
         </div>
@@ -420,18 +411,35 @@
 
                 setTimeout(() => {
                     const query = text.toLowerCase();
-                    let reply = "I'm Anthony's AI. I can tell you about his IT skills, Figma designs, or how to hire him!";
+                    let reply = "";
 
-                    if (query.includes('skill') || query.includes('can do')) {
-                        reply = "Anthony is an IT Professional skilled in UI/UX Design (Figma), Graphic Layout, 3D Modeling, and Modern Web Development.";
-                    } else if (query.includes('figma') || query.includes('design')) {
-                        reply = "Check out his Figma Prototype in the Skills section! He specializes in creating intuitive and strategic digital layouts.";
-                    } else if (query.includes('contact') || query.includes('email') || query.includes('hire')) {
-                        reply = "You can contact Anthony at espinosaanthony50@gmail.com. He's always open to new collaborations!";
-                    } else if (query.includes('mern') || query.includes('react') || query.includes('stack')) {
-                        reply = "Anthony is deeply interested in the MERN stack (MongoDB, Express, React, Node.js) for building scalable web applications.";
-                    } else if (query.includes('hello') || query.includes('hi')) {
-                        reply = "Hi there! I can help you navigate Anthony's portfolio. What would you like to know?";
+                    // --- SMART RESPONSE LOGIC ---
+                    if (query.includes('skill') || query.includes('can do') || query.includes('expertise')) {
+                        reply = "Anthony is an IT professional skilled in UI/UX Design (Figma), Graphic Layout, and Web Development. He has a particular interest in the MERN stack.";
+                    } 
+                    else if (query.includes('mern') || query.includes('react') || query.includes('node')) {
+                        reply = "Yes! Anthony is an aspiring Full-Stack Developer specializing in the MERN stack (MongoDB, Express, React, and Node.js).";
+                    }
+                    else if (query.includes('project') || query.includes('work') || query.includes('build')) {
+                        reply = "Anthony has developed several projects, including an Academic Management System (Capstone), a Personal Finance Tracker using Firebase, and various logic engines.";
+                    }
+                    else if (query.includes('figma') || query.includes('design') || query.includes('ui')) {
+                        reply = "Anthony is a 'Digital Architect' who uses Figma to bridge the gap between technical efficiency and user experience. You can see his prototype in the Skills section!";
+                    }
+                    else if (query.includes('contact') || query.includes('email') || query.includes('hire') || query.includes('phone')) {
+                        reply = "You can reach Anthony at espinosaanthony50@gmail.com or call 09815600546. He is currently open to new collaborations!";
+                    }
+                    else if (query.includes('education') || query.includes('school') || query.includes('college')) {
+                        reply = "Anthony is an Information Technology student at Central Philippine State University (CPSU).";
+                    }
+                    else if (query.includes('hello') || query.includes('hi') || query.includes('hey')) {
+                        reply = "Hello! I'm Anthony's AI assistant. Ask me about his MERN stack projects, his design skills, or how to contact him.";
+                    }
+                    else if (query.includes('certif') || query.includes('cyber')) {
+                        reply = "Anthony holds a verified certificate in Cyber Security, focusing on network defense and security strategy.";
+                    }
+                    else {
+                        reply = "That's a great question! While I'm still learning, I can tell you that Anthony is a dedicated IT student and aspiring developer. Would you like his contact info?";
                     }
 
                     appendMsg(reply, 'bot');
@@ -445,7 +453,11 @@
             div.className = `msg ${sender}`;
             div.innerText = text;
             messages.appendChild(div);
-            messages.scrollTop = messages.scrollHeight;
+            
+            messages.scrollTo({
+                top: messages.scrollHeight,
+                behavior: 'smooth'
+            });
         }
     </script>
 </body>
