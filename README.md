@@ -323,7 +323,7 @@
         <h1 class="main-title">ANTHONY ESPINOSA</h1>
         <p style="color: var(--text-dim); letter-spacing: 2px; font-weight: 300;">STRATEGIC GRAPHICS DESIGNER | IT PROFESSIONAL</p>
         
-        <a href="Anthony_Espinosa_CV.pdf" class="btn-cv" download="Anthony_Espinosa_CV.pdf">
+        <a href="Professional Minimalist CV Resume.jpg" class="btn-cv" download="Professional Minimalist CV Resume.jpg">
             <i class="fas fa-file-pdf"></i> DOWNLOAD CV
         </a>
     </header>
