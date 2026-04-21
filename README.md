@@ -11,7 +11,7 @@
             --bg-card: #141414;
             --text-main: #f5f5f5;
             --text-dim: #999999; 
-            --accent: #ffffff; 
+            --accent: #ffffff;
             --border: #222222;
             --nav-height: 70px;
             --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -32,24 +32,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* --- HEADER & NAVIGATION --- */
-        header {
-            text-align: center;
-            padding: 140px 20px 100px;
-            background: radial-gradient(circle at top, #1a1a1a 0%, #0a0a0a 100%);
-        }
-
-        .main-title {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            font-weight: 900;
-            letter-spacing: -2px;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-            background: linear-gradient(to bottom, #fff 40%, #555 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
+        /* --- NAVIGATION --- */
         nav {
             position: sticky;
             top: 0;
@@ -75,11 +58,26 @@
             transition: var(--transition);
         }
 
-        nav a:hover {
-            color: var(--text-main);
+        nav a:hover { color: var(--text-main); }
+
+        /* --- HEADER --- */
+        header {
+            text-align: center;
+            padding: 140px 20px 100px;
+            background: radial-gradient(circle at top, #1a1a1a 0%, #0a0a0a 100%);
         }
 
-        /* --- BUTTONS --- */
+        .main-title {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 900;
+            letter-spacing: -2px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            background: linear-gradient(to bottom, #fff 40%, #555 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
         .btn-cv {
             display: inline-flex;
             align-items: center;
@@ -93,13 +91,11 @@
             font-size: 0.9rem;
             border-radius: 100px;
             transition: var(--transition);
-            cursor: pointer;
             border: none;
-            box-shadow: 0 10px 20px rgba(255,255,255,0.05);
         }
 
         .btn-cv:hover {
-            transform: translateY(-3px) scale(1.02);
+            transform: translateY(-3px);
             background-color: #fff;
         }
 
@@ -129,7 +125,6 @@
             flex: 1;
         }
 
-        /* --- GRID LAYOUTS --- */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -148,10 +143,7 @@
             color: inherit;
         }
 
-        .card:hover {
-            border-color: #444;
-            transform: translateY(-10px);
-        }
+        .card:hover { border-color: #444; transform: translateY(-10px); }
 
         .card img {
             width: 100%;
@@ -161,146 +153,62 @@
             transition: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .card:hover img {
-            filter: grayscale(0%);
-            transform: scale(1.05);
+        .card:hover img { filter: grayscale(0%); transform: scale(1.05); }
+
+        .card-content { padding: 30px; flex-grow: 1; }
+
+        /* --- CERTIFICATE FIX --- */
+        .cert-card img {
+            height: auto;
+            max-height: 500px;
+            object-fit: contain;
+            background: #000;
         }
 
-        .card-content {
-            padding: 30px;
-            flex-grow: 1;
+        /* --- CONTACT FIX --- */
+        .contact-container {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .card-content h3 {
-            margin-bottom: 10px;
-            font-size: 1.25rem;
-        }
-
-        .card-content p {
-            color: var(--text-dim);
-            font-size: 0.95rem;
-        }
-
-        /* --- AI CHATBOT STYLES --- */
-        #chatbot-container {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 2000;
-        }
-
-        #chat-btn {
-            width: 60px;
-            height: 60px;
-            background: var(--text-main);
-            color: var(--bg-dark);
-            border-radius: 50%;
+        .social-links {
             display: flex;
-            align-items: center;
             justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-            transition: var(--transition);
-            font-size: 1.4rem;
+            gap: 30px;
+            margin-top: 30px;
         }
 
-        #chat-btn:hover { transform: scale(1.1) rotate(5deg); }
-
-        #chat-box {
-            position: absolute;
-            bottom: 80px;
-            right: 0;
-            width: 320px;
-            height: 480px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            display: none;
-            flex-direction: column;
-            overflow: hidden;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
-            backdrop-filter: blur(10px);
-        }
-
-        #chat-header {
-            padding: 18px 20px;
-            background: #1a1a1a;
-            border-bottom: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        #chat-messages {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .msg {
-            max-width: 85%;
-            padding: 12px 16px;
-            border-radius: 18px;
-            font-size: 0.85rem;
-            line-height: 1.5;
-            animation: fadeIn 0.3s ease forwards;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .bot-msg {
-            background: var(--border);
-            color: var(--text-main);
-            align-self: flex-start;
-            border-bottom-left-radius: 4px;
-        }
-
-        .user-msg {
-            background: var(--text-main);
-            color: var(--bg-dark);
-            align-self: flex-end;
-            border-bottom-right-radius: 4px;
-            font-weight: 500;
-        }
-
-        .typing {
-            font-style: italic;
-            font-size: 0.75rem;
+        .social-links a {
             color: var(--text-dim);
-            margin-bottom: 10px;
-            display: none;
+            font-size: 1.8rem;
+            transition: var(--transition);
         }
 
-        #chat-input-area {
-            padding: 15px 20px;
-            border-top: 1px solid var(--border);
-            display: flex;
-            gap: 12px;
-            background: #0d0d0d;
+        .social-links a:hover {
+            color: var(--text-main);
+            transform: translateY(-5px);
         }
 
-        #chat-input-area input {
-            flex: 1;
-            background: transparent;
-            border: none;
-            color: #fff;
-            outline: none;
-            font-size: 0.85rem;
+        /* --- CHATBOT --- */
+        #chatbot-container { position: fixed; bottom: 30px; right: 30px; z-index: 2000; }
+        #chat-btn {
+            width: 60px; height: 60px; background: var(--text-main); color: var(--bg-dark);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; box-shadow: 0 10px 30px rgba(0,0,0,0.4); font-size: 1.4rem;
         }
-
-        /* --- RESPONSIVE --- */
-        @media (max-width: 750px) {
-            header { padding: 100px 20px 60px; }
-            section { padding: 80px 20px; }
-            .grid { grid-template-columns: 1fr; }
-            #chat-box { width: 280px; height: 420px; right: -10px; }
+        #chat-box {
+            position: absolute; bottom: 80px; right: 0; width: 320px; height: 480px;
+            background: var(--bg-card); border: 1px solid var(--border); border-radius: 24px;
+            display: none; flex-direction: column; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.6);
         }
+        #chat-header { padding: 18px 20px; background: #1a1a1a; display: flex; justify-content: space-between; align-items: center; }
+        #chat-messages { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px; }
+        .msg { max-width: 85%; padding: 12px 16px; border-radius: 18px; font-size: 0.85rem; }
+        .bot-msg { background: var(--border); color: #fff; align-self: flex-start; border-bottom-left-radius: 4px; }
+        .user-msg { background: var(--text-main); color: var(--bg-dark); align-self: flex-end; border-bottom-right-radius: 4px; }
+        #chat-input-area { padding: 15px 20px; border-top: 1px solid var(--border); display: flex; gap: 12px; }
+        #chat-input-area input { flex: 1; background: transparent; border: none; color: #fff; outline: none; }
     </style>
 </head>
 <body>
@@ -314,8 +222,7 @@
 
     <header>
         <h1 class="main-title">ANTHONY ESPINOSA</h1>
-        <p style="color: var(--text-dim); letter-spacing: 2px; font-weight: 300;">STRATEGIC GRAPHICS DESIGNER | IT PROFESSIONAL</p>
-        
+        <p style="color: var(--text-dim); letter-spacing: 2px;">STRATEGIC GRAPHICS DESIGNER | IT PROFESSIONAL</p>
         <a href="Professional Minimalist CV Resume.jpg" class="btn-cv" download>
             <i class="fas fa-file-pdf"></i> DOWNLOAD CV
         </a>
@@ -324,12 +231,10 @@
     <section id="about">
         <h2>ABOUT ME</h2>
         <div class="grid" style="align-items: center;">
+            <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/img_20260421_1341155322485705782540295.png?w=815" alt="Anthony" style="width: 100%; border-radius: 20px;">
             <div>
-                <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/img_20260421_1341155322485705782540295.png?w=815" alt="Anthony" style="width: 100%; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.3);">
-            </div>
-            <div>
-                <p style="font-size: 1.25rem; line-height: 1.8; font-weight: 500;">Strategic Graphic Designer with a proven track record of translating complex briefs into high-performing visual assets.</p>
-                <p style="margin-top: 25px; color: var(--text-dim);">Expert in Adobe Creative Suite and brand systems, based in the Philippines with a Bachelor in Information Technology from Central Philippine State University. I bridge the gap between technical IT infrastructure and creative digital architecture.</p>
+                <p style="font-size: 1.25rem; font-weight: 500;">Strategic Graphic Designer focused on high-performing visual assets and MERN stack development.</p>
+                <p style="margin-top: 25px; color: var(--text-dim);">Expert in Adobe Creative Suite and brand systems, bridging IT infrastructure with creative design architecture.</p>
             </div>
         </div>
     </section>
@@ -343,37 +248,41 @@
                 </div>
                 <div class="card-content">
                     <h3>UI/UX Design</h3>
-                    <p>Interface prototypes and design systems built for high-conversion user experiences.</p>
+                    <p>Prototyping and design systems built in Figma.</p>
                 </div>
             </a>
-
             <div class="card">
                 <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/received_267360033126596614052547090387034825.jpeg?w=632" alt="Layout">
-                <div class="card-content">
-                    <h3>Design & Layout</h3>
-                    <p>Expertise in T-shirt sublimation layout and brand identity systems.</p>
-                </div>
+                <div class="card-content"><h3>Design & Layout</h3><p>T-shirt sublimation and brand identity.</p></div>
             </div>
-
             <div class="card">
-                <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/received_14720831838393725292710248625092296.jpeg?w=683" alt="Dev">
-                <div class="card-content">
-                    <h3>Technical IT</h3>
-                    <p>SEO optimization and custom JavaScript-based physics simulations.</p>
-                </div>
+                <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/received_14720831838393725292710248625092296.jpeg?w=683" alt="IT">
+                <div class="card-content"><h3>Technical IT</h3><p>SEO and JS-based simulations.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certificates">
+        <h2>CERTIFICATES</h2>
+        <div class="card cert-card" style="max-width: 800px; margin: 0 auto;">
+            <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/received_9445525915134996693128524351569481.jpeg?w=716" alt="Cyber Security">
+            <div class="card-content">
+                <h3>Cyber Security Completion</h3>
+                <p>Fundamental mastery in network defense and security practices.</p>
             </div>
         </div>
     </section>
 
     <section id="contact">
         <h2>CONTACT</h2>
-        <div style="text-align: center;">
-            <p style="font-size: 1.5rem; color: #fff; font-weight: 700;">Ready to collaborate?</p>
-            <p style="color: var(--text-dim); margin-bottom: 20px;">Email: espinosaanthony50@gmail.com</p>
-            <div class="social-icons">
+        <div class="contact-container">
+            <p style="font-size: 1.5rem; font-weight: 700;">Ready to collaborate?</p>
+            <p style="color: var(--text-dim);">Phone: 09815600546 | Email: espinosaanthony50@gmail.com</p>
+            <div class="social-links">
                 <a href="mailto:espinosaanthony50@gmail.com"><i class="fas fa-envelope"></i></a>
-                <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.facebook.com/anthony.ortegaespinosa.1" target="_blank"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://www.instagram.com/toni_2high" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
             </div>
         </div>
     </section>
@@ -381,71 +290,52 @@
     <div id="chatbot-container">
         <div id="chat-box">
             <div id="chat-header">
-                <span style="font-weight: 800; font-size: 0.75rem; letter-spacing: 1px; color: var(--text-main);">AI ASSISTANT</span>
+                <span style="font-weight: 800; font-size: 0.75rem;">AI ASSISTANT</span>
                 <i class="fas fa-times" onclick="toggleChat()" style="cursor:pointer; opacity: 0.5;"></i>
             </div>
             <div id="chat-messages">
-                <div class="msg bot-msg">Hello! I'm Anthony's AI assistant. How can I help you explore his work today?</div>
+                <div class="msg bot-msg">Hello! I'm Anthony's AI assistant. Ask me about his work!</div>
             </div>
-            <div id="typing-indicator" class="typing" style="margin-left: 20px;">AI is thinking...</div>
             <div id="chat-input-area">
-                <input type="text" id="user-input" placeholder="Ask about skills, contact, or projects..." onkeypress="handleKey(event)">
-                <i class="fas fa-paper-plane" onclick="sendMessage()" style="cursor:pointer; color: var(--text-main);"></i>
+                <input type="text" id="user-input" placeholder="Ask a question..." onkeypress="if(event.key==='Enter') sendMessage()">
+                <i class="fas fa-paper-plane" onclick="sendMessage()" style="cursor:pointer;"></i>
             </div>
         </div>
-        <div id="chat-btn" onclick="toggleChat()">
-            <i class="fas fa-robot"></i>
-        </div>
+        <div id="chat-btn" onclick="toggleChat()"><i class="fas fa-robot"></i></div>
     </div>
 
     <script>
         function toggleChat() {
-            const chatBox = document.getElementById('chat-box');
-            chatBox.style.display = chatBox.style.display === 'flex' ? 'none' : 'flex';
-        }
-
-        function handleKey(e) {
-            if (e.key === 'Enter') sendMessage();
+            const cb = document.getElementById('chat-box');
+            cb.style.display = cb.style.display === 'flex' ? 'none' : 'flex';
         }
 
         function sendMessage() {
             const input = document.getElementById('user-input');
-            const messages = document.getElementById('chat-messages');
-            const typing = document.getElementById('typing-indicator');
-            const val = input.value.trim();
-            
-            if (val !== "") {
-                const userDiv = document.createElement('div');
-                userDiv.className = 'msg user-msg';
-                userDiv.textContent = val;
-                messages.appendChild(userDiv);
+            const msgs = document.getElementById('chat-messages');
+            if (input.value.trim() !== "") {
+                const uDiv = document.createElement('div');
+                uDiv.className = 'msg user-msg';
+                uDiv.textContent = input.value;
+                msgs.appendChild(uDiv);
+                
+                const q = input.value.toLowerCase();
                 input.value = "";
-                messages.scrollTop = messages.scrollHeight;
-
-                // Show Typing Indicator
-                typing.style.display = 'block';
+                msgs.scrollTop = msgs.scrollHeight;
 
                 setTimeout(() => {
-                    typing.style.display = 'none';
-                    const botDiv = document.createElement('div');
-                    botDiv.className = 'msg bot-msg';
-                    
-                    const query = val.toLowerCase();
-                    if (query.includes("skill") || query.includes("do")) {
-                        botDiv.textContent = "Anthony is an IT professional specializing in UI/UX Design (Figma), Graphic Layout, and Web Development (MERN Stack).";
-                    } else if (query.includes("contact") || query.includes("email") || query.includes("hire")) {
-                        botDiv.textContent = "You can reach Anthony at espinosaanthony50@gmail.com or call 09815600546.";
-                    } else if (query.includes("mern") || query.includes("code")) {
-                        botDiv.textContent = "He is an aspiring Full-Stack Developer with a focus on MongoDB, Express, React, and Node.js.";
-                    } else if (query.includes("hi") || query.includes("hello")) {
-                        botDiv.textContent = "Hi there! I'm an AI trained on Anthony's portfolio. Ask me about his projects or education!";
+                    const bDiv = document.createElement('div');
+                    bDiv.className = 'msg bot-msg';
+                    if (q.includes("skill") || q.includes("mern")) {
+                        bDiv.textContent = "Anthony is skilled in MERN Stack, UI/UX Design, and Graphic Layout.";
+                    } else if (q.includes("contact") || q.includes("hire")) {
+                        bDiv.textContent = "You can email him at espinosaanthony50@gmail.com.";
                     } else {
-                        botDiv.textContent = "That's a great question! Anthony's expertise covers both creative design and technical IT infrastructure. Would you like to see his projects?";
+                        bDiv.textContent = "I'm here to help! Ask about Anthony's IT or design expertise.";
                     }
-                    
-                    messages.appendChild(botDiv);
-                    messages.scrollTop = messages.scrollHeight;
-                }, 1200);
+                    msgs.appendChild(bDiv);
+                    msgs.scrollTop = msgs.scrollHeight;
+                }, 1000);
             }
         }
     </script>
