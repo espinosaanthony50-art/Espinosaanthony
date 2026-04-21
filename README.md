@@ -322,9 +322,10 @@
     <header>
         <h1 class="main-title">ANTHONY ESPINOSA</h1>
         <p style="color: var(--text-dim); letter-spacing: 2px; font-weight: 300;">STRATEGIC GRAPHICS DESIGNER | IT PROFESSIONAL</p>
-        <button class="btn-cv" onclick="window.open('https://drive.google.com/file/d/1YYoxi10H75lOFZd935P_LGgEezhAr6cK/view?usp=drivesdk', '_blank')">
-            <i class="fas fa-file-pdf"></i> VIEW / DOWNLOAD CV
-        </button>
+        
+        <a href="Anthony_Espinosa_CV.pdf" class="btn-cv" download="Anthony_Espinosa_CV.pdf">
+            <i class="fas fa-file-pdf"></i> DOWNLOAD CV
+        </a>
     </header>
 
     <section id="about">
@@ -397,95 +398,3 @@
     <section id="contact">
         <h2>CONTACT</h2>
         <div class="contact-info" style="text-align: center;">
-            <p style="font-size: 1.5rem; color: #fff; font-weight: 700;">Ready to collaborate?</p>
-            <p style="color: var(--text-dim);">Phone: 09815600546 | Email: espinosaanthony50@gmail.com</p>
-            <div class="social-icons">
-                <a href="mailto:espinosaanthony50@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-                <a href="https://www.facebook.com/anthony.ortegaespinosa.1" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/toni_2high" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.figma.com" target="_blank" title="Figma"><i class="fab fa-figma"></i></a>
-                <a href="https://github.com" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-            </div>
-        </div>
-    </section>
-
-    <div id="chat-trigger" onclick="toggleChat()"><i class="fas fa-comment"></i></div>
-    
-    <div id="chat-widget">
-        <div id="chat-header">
-            <div style="display:flex; align-items:center; gap:10px;">
-                <div style="width:8px; height:8px; background:#00ff00; border-radius:50%;"></div>
-                <strong style="font-size:0.8rem; letter-spacing:1px; text-transform:uppercase;">AI Assistant</strong>
-            </div>
-            <span onclick="toggleChat()" style="cursor:pointer; font-size: 1.5rem; color: var(--text-dim);">&times;</span>
-        </div>
-        <div id="chat-messages">
-            <div class="msg bot">Hi! I'm Anthony's AI. How can I help you learn about his experience?</div>
-        </div>
-        
-        <div class="chat-options">
-            <button class="opt-btn" onclick="handleQuickAction('Experience')">Work History</button>
-            <button class="opt-btn" onclick="handleQuickAction('Skills')">Skills</button>
-            <button class="opt-btn" onclick="handleQuickAction('Education')">Education</button>
-            <button class="opt-btn" onclick="handleQuickAction('Contact')">Contact</button>
-        </div>
-
-        <div id="chat-input-area">
-            <input type="text" id="chat-input" placeholder="Ask about Anthony..." onkeypress="handleChat(event)">
-        </div>
-    </div>
-
-    <script>
-        function toggleChat() {
-            const chat = document.getElementById('chat-widget');
-            chat.style.display = (chat.style.display === 'flex') ? 'none' : 'flex';
-        }
-
-        function handleQuickAction(action) {
-            processChat(action);
-        }
-
-        function handleChat(e) {
-            if (e.key === 'Enter') {
-                const input = document.getElementById('chat-input');
-                const text = input.value.trim();
-                if (!text) return;
-                input.value = '';
-                processChat(text);
-            }
-        }
-
-        function processChat(userInput) {
-            appendMessage(userInput, 'user');
-            
-            const msg = userInput.toLowerCase();
-            setTimeout(() => {
-                let response = "I can tell you about Anthony's roles at Ginyard, his IT degree, or his design projects. Try one of the buttons!";
-                
-                if (msg.includes('experience') || msg.includes('work') || msg.includes('history')) {
-                    response = "Anthony served as Product Design Manager at both Ginyard International (2020-2023) and Arowwai Industries (2019-2020), leading branding and SEO efforts.";
-                } else if (msg.includes('skill') || msg.includes('design')) {
-                    response = "He is an expert in Adobe Creative Suite, brand systems, SEO marketing, and technical 3D modeling.";
-                } else if (msg.includes('education') || msg.includes('college') || msg.includes('university')) {
-                    response = "Anthony holds a Bachelor of Information Technology from Central Philippine State University.";
-                } else if (msg.includes('contact') || msg.includes('email') || msg.includes('phone')) {
-                    response = "Reach Anthony at 09815600546 or espinosaanthony50@gmail.com.";
-                } else if (msg.includes('3d') || msg.includes('hoopshot')) {
-                    response = "One of his key projects is the Hoopshot Vendo Machine, which involved full 3D modeling and physical prototype construction.";
-                }
-                
-                appendMessage(response, 'bot');
-            }, 600);
-        }
-
-        function appendMessage(text, sender) {
-            const container = document.getElementById('chat-messages');
-            const div = document.createElement('div');
-            div.className = `msg ${sender}`;
-            div.innerText = text;
-            container.appendChild(div);
-            container.scrollTop = container.scrollHeight;
-        }
-    </script>
-</body>
-</html>
