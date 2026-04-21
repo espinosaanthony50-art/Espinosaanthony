@@ -212,35 +212,33 @@
             transform: translateY(-5px);
         }
 
-        /* --- CHAT BOT STYLES --- */
-        #chat-widget {
+        /* --- CHATBOT STYLES --- */
+        #chatbot-container {
             position: fixed;
             bottom: 30px;
             right: 30px;
             z-index: 2000;
-            font-family: 'Inter', sans-serif;
         }
 
-        #chat-button {
+        #chat-btn {
             width: 60px;
             height: 60px;
-            border-radius: 50%;
             background: var(--text-main);
             color: var(--bg-dark);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
             cursor: pointer;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             transition: var(--transition);
         }
 
-        #chat-button:hover {
+        #chat-btn:hover {
             transform: scale(1.1);
         }
 
-        #chat-window {
+        #chat-box {
             position: absolute;
             bottom: 80px;
             right: 0;
@@ -252,17 +250,16 @@
             display: none;
             flex-direction: column;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
 
         #chat-header {
             padding: 20px;
             background: #1a1a1a;
             border-bottom: 1px solid var(--border);
-            font-weight: 700;
-            font-size: 0.9rem;
             display: flex;
             justify-content: space-between;
+            align-items: center;
         }
 
         #chat-messages {
@@ -271,12 +268,12 @@
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
         }
 
         .msg {
             max-width: 80%;
-            padding: 10px 15px;
+            padding: 10px 14px;
             border-radius: 15px;
             font-size: 0.85rem;
             line-height: 1.4;
@@ -303,7 +300,7 @@
             gap: 10px;
         }
 
-        #chat-input {
+        #chat-input-area input {
             flex: 1;
             background: transparent;
             border: none;
@@ -312,10 +309,14 @@
             font-size: 0.85rem;
         }
 
-        #send-btn {
-            color: var(--text-main);
+        #chat-input-area i {
+            color: var(--text-dim);
             cursor: pointer;
-            transition: 0.2s;
+            transition: var(--transition);
+        }
+
+        #chat-input-area i:hover {
+            color: #fff;
         }
 
         /* --- RESPONSIVE --- */
@@ -324,7 +325,7 @@
             header { padding: 100px 20px 60px; }
             section { padding: 80px 20px; }
             nav { gap: 15px; }
-            #chat-window { width: 280px; right: -10px; }
+            #chat-box { width: 280px; right: -10px; }
         }
     </style>
 </head>
@@ -425,74 +426,72 @@
         </div>
     </section>
 
-    <div id="chat-widget">
-        <div id="chat-window">
+    <div id="chatbot-container">
+        <div id="chat-box">
             <div id="chat-header">
-                <span>AE Assistant</span>
-                <i class="fas fa-times" style="cursor:pointer" onclick="toggleChat()"></i>
+                <span style="font-weight: 700; font-size: 0.9rem;">AE Assistant</span>
+                <i class="fas fa-times" onclick="toggleChat()" style="cursor:pointer;"></i>
             </div>
             <div id="chat-messages">
-                <div class="msg bot-msg">Hi! I'm Anthony's virtual assistant. How can I help you today?</div>
+                <div class="msg bot-msg">Hi! I'm Anthony's assistant. How can I help you today?</div>
             </div>
             <div id="chat-input-area">
-                <input type="text" id="chat-input" placeholder="Type a message...">
-                <i class="fas fa-paper-plane" id="send-btn" onclick="sendMessage()"></i>
+                <input type="text" id="user-input" placeholder="Type a message..." onkeypress="handleKey(event)">
+                <i class="fas fa-paper-plane" onclick="sendMessage()"></i>
             </div>
         </div>
-        <div id="chat-button" onclick="toggleChat()">
+        <div id="chat-btn" onclick="toggleChat()">
             <i class="fas fa-comment-dots"></i>
         </div>
     </div>
 
     <script>
         function toggleChat() {
-            const chatWindow = document.getElementById('chat-window');
-            chatWindow.style.display = chatWindow.style.display === 'flex' ? 'none' : 'flex';
+            const chatBox = document.getElementById('chat-box');
+            chatBox.style.display = chatBox.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        function handleKey(e) {
+            if (e.key === 'Enter') sendMessage();
         }
 
         function sendMessage() {
-            const input = document.getElementById('chat-input');
-            const container = document.getElementById('chat-messages');
+            const input = document.getElementById('user-input');
+            const messages = document.getElementById('chat-messages');
             
             if (input.value.trim() !== "") {
                 // User Message
                 const userDiv = document.createElement('div');
                 userDiv.className = 'msg user-msg';
                 userDiv.textContent = input.value;
-                container.appendChild(userDiv);
+                messages.appendChild(userDiv);
 
-                const userText = input.value.toLowerCase();
+                const query = input.value.toLowerCase();
                 input.value = "";
 
                 // Scroll to bottom
-                container.scrollTop = container.scrollHeight;
+                messages.scrollTop = messages.scrollHeight;
 
-                // Simple Bot Response Logic
+                // Bot Response Simulation
                 setTimeout(() => {
                     const botDiv = document.createElement('div');
                     botDiv.className = 'msg bot-msg';
                     
-                    if(userText.includes("hello") || userText.includes("hi")) {
-                        botDiv.textContent = "Hello! I can help you find Anthony's contact info or explain his projects.";
-                    } else if(userText.includes("contact") || userText.includes("email")) {
-                        botDiv.textContent = "You can reach Anthony directly at espinosaanthony50@gmail.com.";
-                    } else if(userText.includes("project") || userText.includes("skill")) {
-                        botDiv.textContent = "Anthony specializes in UI/UX Design, T-shirt layout, and Technical IT solutions.";
+                    if (query.includes("hello") || query.includes("hi")) {
+                        botDiv.textContent = "Hello! Feel free to ask about Anthony's IT skills or design projects.";
+                    } else if (query.includes("contact") || query.includes("email")) {
+                        botDiv.textContent = "You can reach Anthony at espinosaanthony50@gmail.com.";
+                    } else if (query.includes("skills")) {
+                        botDiv.textContent = "Anthony is skilled in UI/UX Design, Graphic Design (T-shirt layout), and Technical IT support.";
                     } else {
-                        botDiv.textContent = "Thanks for the message! Feel free to explore the portfolio sections above.";
+                        botDiv.textContent = "Thanks for the message! Anthony will get back to you as soon as possible.";
                     }
                     
-                    container.appendChild(botDiv);
-                    container.scrollTop = container.scrollHeight;
-                }, 800);
+                    messages.appendChild(botDiv);
+                    messages.scrollTop = messages.scrollHeight;
+                }, 1000);
             }
         }
-
-        // Allow "Enter" key to send
-        document.getElementById('chat-input').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') sendMessage();
-        });
     </script>
-
 </body>
 </html>
