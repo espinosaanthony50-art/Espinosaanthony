@@ -1,4 +1,4 @@
-no<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -213,7 +213,8 @@ no<!DOCTYPE html>
         }
 
         /* --- RESPONSIVE --- */
-        @media (max-width: 600px) {
+        @media (max-width: 750px) {
+            .about-grid { gap: 30px !important; }
             header { padding: 100px 20px 60px; }
             section { padding: 80px 20px; }
             nav { gap: 15px; }
@@ -240,7 +241,7 @@ no<!DOCTYPE html>
     
     <section id="about">
         <h2>ABOUT ME</h2>
-        <div class="grid" style="align-items: center; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+        <div class="grid about-grid" style="align-items: center;">
             <div style="position: relative;">
                 <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/img_20260421_1341155322485705782540295.png?w=815" alt="Anthony Espinosa" style="width: 100%; border-radius: 20px; filter: contrast(1.05); box-shadow: 0 20px 40px rgba(0,0,0,0.3);">
             </div>
@@ -254,7 +255,7 @@ no<!DOCTYPE html>
     <section id="skills">
         <h2>SKILLS & PROJECTS</h2>
         <div class="grid">
-            <a href="(https://www.figma.com/proto/eRh04x0LxszeTEFdyA1lXW/Untitled?node-id=1-14&starting-point-node-id=1%3A2&t=hTkYviMs08iQDl4m-1)" class="card">
+            <a href="https://www.figma.com/proto/eRh04x0LxszeTEFdyA1lXW/Untitled?node-id=1-14&starting-point-node-id=1%3A2&t=hTkYviMs08iQDl4m-1" target="_blank" rel="noopener noreferrer" class="card">
                 <div style="height: 280px; background: #1e1e1e; display: flex; align-items: center; justify-content: center;">
                     <i class="fab fa-figma" style="font-size: 5rem; color: #F24E1E;"></i>
                 </div>
@@ -294,7 +295,7 @@ no<!DOCTYPE html>
     <section id="certificates">
         <h2>CERTIFICATES</h2>
         <div class="card" style="max-width: 700px; margin: 0 auto; display: flex; flex-direction: column;">
-            <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/received_9445525915134996693128524351569481.jpeg?w=716" alt="Cyber Security" style="height: 400px;">
+            <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/received_9445525915134996693128524351569481.jpeg?w=716" alt="Cyber Security" style="height: 400px; object-position: top;">
             <div class="card-content">
                 <h3>Cyber Security Completion</h3>
                 <p>Verified mastery in fundamental Cyber Security practices and network defense strategy.</p>
@@ -306,13 +307,13 @@ no<!DOCTYPE html>
         <h2>CONTACT</h2>
         <div class="contact-info" style="text-align: center;">
             <p style="font-size: 1.5rem; color: #fff; font-weight: 700;">Ready to collaborate?</p>
-            <p style="color: var(--text-dim);">Phone: 09815600546 | Email: espinosaanthony50@gmail.com</p>
+            <p style="color: var(--text-dim); margin-bottom: 10px;">Phone: 09815600546 | Email: espinosaanthony50@gmail.com</p>
             <div class="social-icons">
                 <a href="mailto:espinosaanthony50@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-                <a href="https://www.facebook.com/anthony.ortegaespinosa.1" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/toni_2high" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.figma.com" target="_blank" title="Figma"><i class="fab fa-figma"></i></a>
-                <a href="https://github.com" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.facebook.com/anthony.ortegaespinosa.1" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/toni_2high" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.figma.com" target="_blank" rel="noopener noreferrer" title="Figma"><i class="fab fa-figma"></i></a>
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fab fa-github"></i></a>
             </div>
         </div>
     </section>
