@@ -100,7 +100,6 @@
 
         .btn-cv:hover {
             transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(255,255,255,0.1);
             background-color: #fff;
         }
 
@@ -152,7 +151,6 @@
         .card:hover {
             border-color: #444;
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
         .card img {
@@ -183,36 +181,7 @@
             font-size: 0.95rem;
         }
 
-        .figma-link {
-            display: inline-block;
-            margin-top: 15px;
-            color: var(--text-main);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 700;
-        }
-
-        /* --- CONTACT --- */
-        .social-icons {
-            margin-top: 40px;
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-        }
-
-        .social-icons a {
-            color: var(--text-dim);
-            font-size: 1.8rem;
-            transition: var(--transition);
-        }
-
-        .social-icons a:hover {
-            color: var(--text-main);
-            transform: translateY(-5px);
-        }
-
-        /* --- CHATBOT STYLES --- */
+        /* --- AI CHATBOT STYLES --- */
         #chatbot-container {
             position: fixed;
             bottom: 30px;
@@ -230,31 +199,31 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
             transition: var(--transition);
+            font-size: 1.4rem;
         }
 
-        #chat-btn:hover {
-            transform: scale(1.1);
-        }
+        #chat-btn:hover { transform: scale(1.1) rotate(5deg); }
 
         #chat-box {
             position: absolute;
             bottom: 80px;
             right: 0;
             width: 320px;
-            height: 450px;
+            height: 480px;
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 20px;
+            border-radius: 24px;
             display: none;
             flex-direction: column;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+            backdrop-filter: blur(10px);
         }
 
         #chat-header {
-            padding: 20px;
+            padding: 18px 20px;
             background: #1a1a1a;
             border-bottom: 1px solid var(--border);
             display: flex;
@@ -264,7 +233,7 @@
 
         #chat-messages {
             flex: 1;
-            padding: 15px;
+            padding: 20px;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
@@ -272,32 +241,48 @@
         }
 
         .msg {
-            max-width: 80%;
-            padding: 10px 14px;
-            border-radius: 15px;
+            max-width: 85%;
+            padding: 12px 16px;
+            border-radius: 18px;
             font-size: 0.85rem;
-            line-height: 1.4;
+            line-height: 1.5;
+            animation: fadeIn 0.3s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .bot-msg {
             background: var(--border);
             color: var(--text-main);
             align-self: flex-start;
-            border-bottom-left-radius: 2px;
+            border-bottom-left-radius: 4px;
         }
 
         .user-msg {
             background: var(--text-main);
             color: var(--bg-dark);
             align-self: flex-end;
-            border-bottom-right-radius: 2px;
+            border-bottom-right-radius: 4px;
+            font-weight: 500;
+        }
+
+        .typing {
+            font-style: italic;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            margin-bottom: 10px;
+            display: none;
         }
 
         #chat-input-area {
-            padding: 15px;
+            padding: 15px 20px;
             border-top: 1px solid var(--border);
             display: flex;
-            gap: 10px;
+            gap: 12px;
+            background: #0d0d0d;
         }
 
         #chat-input-area input {
@@ -309,23 +294,12 @@
             font-size: 0.85rem;
         }
 
-        #chat-input-area i {
-            color: var(--text-dim);
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        #chat-input-area i:hover {
-            color: #fff;
-        }
-
         /* --- RESPONSIVE --- */
         @media (max-width: 750px) {
-            .about-grid { gap: 30px !important; }
             header { padding: 100px 20px 60px; }
             section { padding: 80px 20px; }
-            nav { gap: 15px; }
-            #chat-box { width: 280px; right: -10px; }
+            .grid { grid-template-columns: 1fr; }
+            #chat-box { width: 280px; height: 420px; right: -10px; }
         }
     </style>
 </head>
@@ -342,20 +316,20 @@
         <h1 class="main-title">ANTHONY ESPINOSA</h1>
         <p style="color: var(--text-dim); letter-spacing: 2px; font-weight: 300;">STRATEGIC GRAPHICS DESIGNER | IT PROFESSIONAL</p>
         
-        <a href="Professional Minimalist CV Resume.jpg" class="btn-cv" download="Professional Minimalist CV Resume.jpg">
+        <a href="Professional Minimalist CV Resume.jpg" class="btn-cv" download>
             <i class="fas fa-file-pdf"></i> DOWNLOAD CV
         </a>
     </header>
     
     <section id="about">
         <h2>ABOUT ME</h2>
-        <div class="grid about-grid" style="align-items: center;">
-            <div style="position: relative;">
-                <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/img_20260421_1341155322485705782540295.png?w=815" alt="Anthony Espinosa" style="width: 100%; border-radius: 20px; filter: contrast(1.05); box-shadow: 0 20px 40px rgba(0,0,0,0.3);">
+        <div class="grid" style="align-items: center;">
+            <div>
+                <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/img_20260421_1341155322485705782540295.png?w=815" alt="Anthony" style="width: 100%; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.3);">
             </div>
             <div>
                 <p style="font-size: 1.25rem; line-height: 1.8; font-weight: 500;">Strategic Graphic Designer with a proven track record of translating complex briefs into high-performing visual assets.</p>
-                <p style="margin-top: 25px; color: var(--text-dim);">Expert in Adobe Creative Suite and brand systems, dedicated to enhancing market presence through cohesive storytelling and data-driven design solutions. Based in the Philippines with a Bachelor in Information Technology from Central Philippine State University.</p>
+                <p style="margin-top: 25px; color: var(--text-dim);">Expert in Adobe Creative Suite and brand systems, based in the Philippines with a Bachelor in Information Technology from Central Philippine State University. I bridge the gap between technical IT infrastructure and creative digital architecture.</p>
             </div>
         </div>
     </section>
@@ -363,14 +337,13 @@
     <section id="skills">
         <h2>SKILLS & PROJECTS</h2>
         <div class="grid">
-            <a href="https://www.figma.com/proto/YXytqyexSEyzcwuYyX9gi2/Untitled?node-id=2-109&t=j7OVhsdOplpEgxmC-1" target="_blank" rel="noopener noreferrer" class="card">
+            <a href="https://www.figma.com/proto/YXytqyexSEyzcwuYyX9gi2/Untitled?node-id=2-109" target="_blank" class="card">
                 <div style="height: 280px; background: #1e1e1e; display: flex; align-items: center; justify-content: center;">
                     <i class="fab fa-figma" style="font-size: 5rem; color: #F24E1E;"></i>
                 </div>
                 <div class="card-content">
                     <h3>UI/UX Design</h3>
                     <p>Interface prototypes and design systems built for high-conversion user experiences.</p>
-                    <span class="figma-link">View Figma Project <i class="fas fa-external-link-alt"></i></span>
                 </div>
             </a>
 
@@ -378,7 +351,7 @@
                 <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/received_267360033126596614052547090387034825.jpeg?w=632" alt="Layout">
                 <div class="card-content">
                     <h3>Design & Layout</h3>
-                    <p>Expertise in T-shirt sublimation layout, brand identity, and Adobe Creative Suite.</p>
+                    <p>Expertise in T-shirt sublimation layout and brand identity systems.</p>
                 </div>
             </div>
 
@@ -386,42 +359,21 @@
                 <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/received_14720831838393725292710248625092296.jpeg?w=683" alt="Dev">
                 <div class="card-content">
                     <h3>Technical IT</h3>
-                    <p>Digital Marketing, SEO, and Physics-based game simulation hosted on GitHub.</p>
+                    <p>SEO optimization and custom JavaScript-based physics simulations.</p>
                 </div>
-            </div>
-            
-            <div class="card">
-                <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/received_16477739230848778504253922941591082.jpeg?w=768" alt="3D">
-                <div class="card-content">
-                    <h3>3D Modeling</h3>
-                    <p>Conceptualized and built the "Hoopshot Vendo Machine" prototype from 3D model to physical output.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="certificates">
-        <h2>CERTIFICATES</h2>
-        <div class="card" style="max-width: 700px; margin: 0 auto; display: flex; flex-direction: column;">
-            <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/received_9445525915134996693128524351569481.jpeg?w=716" alt="Cyber Security" style="height: 400px; object-position: top;">
-            <div class="card-content">
-                <h3>Cyber Security Completion</h3>
-                <p>Verified mastery in fundamental Cyber Security practices and network defense strategy.</p>
             </div>
         </div>
     </section>
 
     <section id="contact">
         <h2>CONTACT</h2>
-        <div class="contact-info" style="text-align: center;">
+        <div style="text-align: center;">
             <p style="font-size: 1.5rem; color: #fff; font-weight: 700;">Ready to collaborate?</p>
-            <p style="color: var(--text-dim); margin-bottom: 10px;">Phone: 09815600546 | Email: espinosaanthony50@gmail.com</p>
+            <p style="color: var(--text-dim); margin-bottom: 20px;">Email: espinosaanthony50@gmail.com</p>
             <div class="social-icons">
-                <a href="mailto:espinosaanthony50@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-                <a href="https://www.facebook.com/anthony.ortegaespinosa.1" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/toni_2high" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.figma.com" target="_blank" rel="noopener noreferrer" title="Figma"><i class="fab fa-figma"></i></a>
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="mailto:espinosaanthony50@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.instagram.com/toni_2high" target="_blank"><i class="fab fa-instagram"></i></a>
             </div>
         </div>
     </section>
@@ -429,19 +381,20 @@
     <div id="chatbot-container">
         <div id="chat-box">
             <div id="chat-header">
-                <span style="font-weight: 700; font-size: 0.9rem;">AE Assistant</span>
-                <i class="fas fa-times" onclick="toggleChat()" style="cursor:pointer;"></i>
+                <span style="font-weight: 800; font-size: 0.75rem; letter-spacing: 1px; color: var(--text-main);">AI ASSISTANT</span>
+                <i class="fas fa-times" onclick="toggleChat()" style="cursor:pointer; opacity: 0.5;"></i>
             </div>
             <div id="chat-messages">
-                <div class="msg bot-msg">Hi! I'm Anthony's assistant. How can I help you today?</div>
+                <div class="msg bot-msg">Hello! I'm Anthony's AI assistant. How can I help you explore his work today?</div>
             </div>
+            <div id="typing-indicator" class="typing" style="margin-left: 20px;">AI is thinking...</div>
             <div id="chat-input-area">
-                <input type="text" id="user-input" placeholder="Type a message..." onkeypress="handleKey(event)">
-                <i class="fas fa-paper-plane" onclick="sendMessage()"></i>
+                <input type="text" id="user-input" placeholder="Ask about skills, contact, or projects..." onkeypress="handleKey(event)">
+                <i class="fas fa-paper-plane" onclick="sendMessage()" style="cursor:pointer; color: var(--text-main);"></i>
             </div>
         </div>
         <div id="chat-btn" onclick="toggleChat()">
-            <i class="fas fa-comment-dots"></i>
+            <i class="fas fa-robot"></i>
         </div>
     </div>
 
@@ -458,38 +411,41 @@
         function sendMessage() {
             const input = document.getElementById('user-input');
             const messages = document.getElementById('chat-messages');
+            const typing = document.getElementById('typing-indicator');
+            const val = input.value.trim();
             
-            if (input.value.trim() !== "") {
-                // User Message
+            if (val !== "") {
                 const userDiv = document.createElement('div');
                 userDiv.className = 'msg user-msg';
-                userDiv.textContent = input.value;
+                userDiv.textContent = val;
                 messages.appendChild(userDiv);
-
-                const query = input.value.toLowerCase();
                 input.value = "";
-
-                // Scroll to bottom
                 messages.scrollTop = messages.scrollHeight;
 
-                // Bot Response Simulation
+                // Show Typing Indicator
+                typing.style.display = 'block';
+
                 setTimeout(() => {
+                    typing.style.display = 'none';
                     const botDiv = document.createElement('div');
                     botDiv.className = 'msg bot-msg';
                     
-                    if (query.includes("hello") || query.includes("hi")) {
-                        botDiv.textContent = "Hello! Feel free to ask about Anthony's IT skills or design projects.";
-                    } else if (query.includes("contact") || query.includes("email")) {
-                        botDiv.textContent = "You can reach Anthony at espinosaanthony50@gmail.com.";
-                    } else if (query.includes("skills")) {
-                        botDiv.textContent = "Anthony is skilled in UI/UX Design, Graphic Design (T-shirt layout), and Technical IT support.";
+                    const query = val.toLowerCase();
+                    if (query.includes("skill") || query.includes("do")) {
+                        botDiv.textContent = "Anthony is an IT professional specializing in UI/UX Design (Figma), Graphic Layout, and Web Development (MERN Stack).";
+                    } else if (query.includes("contact") || query.includes("email") || query.includes("hire")) {
+                        botDiv.textContent = "You can reach Anthony at espinosaanthony50@gmail.com or call 09815600546.";
+                    } else if (query.includes("mern") || query.includes("code")) {
+                        botDiv.textContent = "He is an aspiring Full-Stack Developer with a focus on MongoDB, Express, React, and Node.js.";
+                    } else if (query.includes("hi") || query.includes("hello")) {
+                        botDiv.textContent = "Hi there! I'm an AI trained on Anthony's portfolio. Ask me about his projects or education!";
                     } else {
-                        botDiv.textContent = "Thanks for the message! Anthony will get back to you as soon as possible.";
+                        botDiv.textContent = "That's a great question! Anthony's expertise covers both creative design and technical IT infrastructure. Would you like to see his projects?";
                     }
                     
                     messages.appendChild(botDiv);
                     messages.scrollTop = messages.scrollHeight;
-                }, 1000);
+                }, 1200);
             }
         }
     </script>
