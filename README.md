@@ -10,7 +10,7 @@
             --bg-dark: #0a0a0a;
             --bg-card: #141414;
             --text-main: #f5f5f5;
-            --text-dim: #999999;
+            --text-dim: #999999; 
             --accent: #ffffff;
             --border: #222222;
             --nav-height: 70px;
