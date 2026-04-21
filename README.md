@@ -329,10 +329,9 @@
             <p>Ready to collaborate or hire?</p>
             <p style="margin-top:20px;">Email: anthony.espinosa@example.com</p>
             <div class="social-icons" style="margin-top: 20px; display: flex; justify-content: center; gap: 30px;">
-                <a href="mailto:anthony.espinosa@example.com" title="Gmail"><i class="fas fa-envelope"></i></a>
-                <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
-                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="mailto:espinosaanthony50@gmail.com" title="Gmail"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.facebook.com/anthony.ortegaespinosa.1" title="Anthony Espinosa"><i class="fab fa-instagram"></i></a>
+                <a href="https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.instagram.com%2F_u%2Ftoni_2high%3Figsh%3DMXFxcXVwc2Y5bXRpeQ%253D%253D%26fbclid%3DIwZXh0bgNhZW0CMTAAYnJpZBExOGZlQURQZkxYbVJBOVZCS3NydGMGYXBwX2lkEDIyMjAzOTE3ODgyMDA4OTIAAR4UpsuBVQOo1vLhiOfZjZPEm0xYGNkuqXalocsoYTG50mS9F8KuuxSybE6KjQ_aem_MrAiJDoPq42jNRK3XPIIjw&h=AT7R1_UhOJeI1CbDlRp_Ns7fbQEpkj7El7kB0Ruu_WzNrrBRuw-P5Z6wt9gzAYbEGcMY_Kl74zLDYodkfY_PicKGv_ARbEX-yEwAlgEK27lkNKBXPx8rYz-LNrtYaQ8i" title="toni_2high"><i class="fab fa-github"></i></a>
                 <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
             </div>
         </div>
