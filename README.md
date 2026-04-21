@@ -322,7 +322,7 @@
     <header>
         <h1 class="main-title">ANTHONY ESPINOSA</h1>
         <p style="color: var(--text-dim); letter-spacing: 2px; font-weight: 300;">STRATEGIC GRAPHICS DESIGNER | IT PROFESSIONAL</p>
-        <button class="btn-cv" onclick="window.open('https://canva.link/92nan5eqndbjrs6', '_blank')">
+        <button class="btn-cv" onclick="window.open('https://drive.google.com/file/d/1YYoxi10H75lOFZd935P_LGgEezhAr6cK/view?usp=drivesdk', '_blank')">
             <i class="fas fa-file-pdf"></i> VIEW / DOWNLOAD CV
         </button>
     </header>
