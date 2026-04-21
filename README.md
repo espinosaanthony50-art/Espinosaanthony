@@ -143,6 +143,10 @@
             border-radius: 16px;
             overflow: hidden;
             transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
         }
 
         .card:hover {
@@ -166,6 +170,7 @@
 
         .card-content {
             padding: 30px;
+            flex-grow: 1;
         }
 
         .card-content h3 {
@@ -178,107 +183,14 @@
             font-size: 0.95rem;
         }
 
-        /* --- CHATBOT UI --- */
-        #chat-widget {
-            position: fixed;
-            bottom: 100px;
-            right: 30px;
-            width: 350px;
-            height: 500px;
-            background: #1a1a1a;
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            display: none;
-            flex-direction: column;
-            box-shadow: 0 24px 48px rgba(0,0,0,0.8);
-            z-index: 2000;
-            overflow: hidden;
-        }
-
-        #chat-header {
-            padding: 20px;
-            background: #222;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border);
-        }
-
-        #chat-messages {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            font-size: 0.9rem;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .msg { padding: 12px 16px; border-radius: 14px; max-width: 85%; }
-        .bot { background: #262626; color: var(--text-main); align-self: flex-start; border-bottom-left-radius: 2px; }
-        .user { background: var(--text-main); color: var(--bg-dark); align-self: flex-end; border-bottom-right-radius: 2px; font-weight: 500; }
-
-        .chat-options {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            padding: 15px;
-            background: #151515;
-        }
-
-        .opt-btn {
-            background: #222;
-            border: 1px solid var(--border);
-            color: var(--text-dim);
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-size: 0.75rem;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .opt-btn:hover {
-            background: #333;
-            color: #fff;
-        }
-
-        #chat-input-area {
-            display: flex;
-            padding: 15px;
-            background: #111;
-            border-top: 1px solid var(--border);
-        }
-
-        #chat-input {
-            flex: 1;
-            background: transparent;
-            border: none;
-            color: white;
-            outline: none;
-            font-size: 0.9rem;
-        }
-
-        #chat-trigger {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: var(--text-main);
-            color: var(--bg-dark);
-            width: 64px;
-            height: 64px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            z-index: 1999;
-            box-shadow: 0 8px 24px rgba(255,255,255,0.1);
-            font-size: 1.5rem;
-            transition: var(--transition);
-        }
-
-        #chat-trigger:hover {
-            transform: rotate(15deg) scale(1.1);
+        .figma-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--text-main);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
         }
 
         /* --- CONTACT --- */
@@ -305,7 +217,6 @@
             header { padding: 100px 20px 60px; }
             section { padding: 80px 20px; }
             nav { gap: 15px; }
-            #chat-widget { width: calc(100% - 40px); right: 20px; bottom: 100px; }
         }
     </style>
 </head>
@@ -313,7 +224,6 @@
 
     <nav>
         <a href="#about">About</a>
-        <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
         <a href="#certificates">Certificates</a>
         <a href="#contact">Contact</a>
@@ -341,25 +251,20 @@
         </div>
     </section>
 
-    <section id="experience">
-        <h2>WORK EXPERIENCE</h2>
-        <div class="grid">
-            <div class="card-content" style="border-left: 2px solid var(--border); margin-bottom: 20px;">
-                <h3 style="color: var(--accent);">Product Design Manager</h3>
-                <p style="color: var(--text-main); font-weight: 600;">Ginyard International Co. | 2020 - 2023</p>
-                <p style="font-size: 0.9rem; margin-top: 10px;">Managed website design, SEO marketing, branding, and logo design while collaborating with the wider development team.</p>
-            </div>
-            <div class="card-content" style="border-left: 2px solid var(--border); margin-bottom: 20px;">
-                <h3 style="color: var(--accent);">Product Design Manager</h3>
-                <p style="color: var(--text-main); font-weight: 600;">Arowwai Industries | 2019 - 2020</p>
-                <p style="font-size: 0.9rem; margin-top: 10px;">Led visual content strategy and brand consistency across digital platforms.</p>
-            </div>
-        </div>
-    </section>
-
     <section id="skills">
         <h2>SKILLS & PROJECTS</h2>
         <div class="grid">
+            <a href="https://www.figma.com" target="_blank" class="card">
+                <div style="height: 280px; background: #1e1e1e; display: flex; align-items: center; justify-content: center;">
+                    <i class="fab fa-figma" style="font-size: 5rem; color: #F24E1E;"></i>
+                </div>
+                <div class="card-content">
+                    <h3>UI/UX Design</h3>
+                    <p>Interface prototypes and design systems built for high-conversion user experiences.</p>
+                    <span class="figma-link">View Figma Project <i class="fas fa-external-link-alt"></i></span>
+                </div>
+            </a>
+
             <div class="card">
                 <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/received_267360033126596614052547090387034825.jpeg?w=632" alt="Layout">
                 <div class="card-content">
@@ -367,6 +272,7 @@
                     <p>Expertise in T-shirt sublimation layout, brand identity, and Adobe Creative Suite.</p>
                 </div>
             </div>
+
             <div class="card">
                 <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/received_14720831838393725292710248625092296.jpeg?w=683" alt="Dev">
                 <div class="card-content">
@@ -374,6 +280,7 @@
                     <p>Digital Marketing, SEO, and Physics-based game simulation hosted on GitHub.</p>
                 </div>
             </div>
+            
             <div class="card">
                 <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/received_16477739230848778504253922941591082.jpeg?w=768" alt="3D">
                 <div class="card-content">
@@ -398,3 +305,17 @@
     <section id="contact">
         <h2>CONTACT</h2>
         <div class="contact-info" style="text-align: center;">
+            <p style="font-size: 1.5rem; color: #fff; font-weight: 700;">Ready to collaborate?</p>
+            <p style="color: var(--text-dim);">Phone: 09815600546 | Email: espinosaanthony50@gmail.com</p>
+            <div class="social-icons">
+                <a href="mailto:espinosaanthony50@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.facebook.com/anthony.ortegaespinosa.1" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/toni_2high" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.figma.com" target="_blank" title="Figma"><i class="fab fa-figma"></i></a>
+                <a href="https://github.com" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>
