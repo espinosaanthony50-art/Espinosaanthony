@@ -327,7 +327,7 @@
             <i class="fas fa-file-pdf"></i> DOWNLOAD CV
         </a>
     </header>
-
+    
     <section id="about">
         <h2>ABOUT ME</h2>
         <div class="grid" style="align-items: center; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
