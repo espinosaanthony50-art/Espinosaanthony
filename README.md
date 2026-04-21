@@ -6,7 +6,6 @@
     <title>Anthony Espinosa | Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* --- DESIGN TOKENS & RESET --- */
         :root {
             --bg-dark: #0a0a0a;
             --bg-card: #141414;
@@ -314,6 +313,7 @@
 
     <nav>
         <a href="#about">About</a>
+        <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
         <a href="#certificates">Certificates</a>
         <a href="#contact">Contact</a>
@@ -321,7 +321,7 @@
 
     <header>
         <h1 class="main-title">ANTHONY ESPINOSA</h1>
-        <p style="color: var(--text-dim); letter-spacing: 2px; font-weight: 300;">ASPIRING IT PROFESSIONAL | SYSTEMS & DESIGN</p>
+        <p style="color: var(--text-dim); letter-spacing: 2px; font-weight: 300;">STRATEGIC GRAPHICS DESIGNER | IT PROFESSIONAL</p>
         <button class="btn-cv" onclick="downloadCV()">
             <i class="fas fa-arrow-down-long"></i> DOWNLOAD CV
         </button>
@@ -331,11 +331,27 @@
         <h2>ABOUT ME</h2>
         <div class="grid" style="align-items: center; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
             <div style="position: relative;">
-                <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/img_20260421_1341155322485705782540295.png?w=815" alt="Anthony Espinosa" style="width: 100%; border-radius: 20px; filter: contrast(1.1);">
+                <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/img_20260421_1341155322485705782540295.png?w=815" alt="Anthony Espinosa" style="width: 100%; border-radius: 20px; filter: contrast(1.05); box-shadow: 0 20px 40px rgba(0,0,0,0.3);">
             </div>
             <div>
-                <p style="font-size: 1.2rem; line-height: 1.8;">I am an aspiring IT Professional driven by how complex systems solve real-world problems. My focus is on bridging the gap between technical efficiency and user experience.</p>
-                <p style="margin-top: 25px; color: var(--text-dim);">Based in the Philippines, I specialize in creative technical solutions ranging from 3D modeling to cybersecurity.</p>
+                <p style="font-size: 1.25rem; line-height: 1.8; font-weight: 500;">Strategic Graphic Designer with a proven track record of translating complex briefs into high-performing visual assets.</p>
+                <p style="margin-top: 25px; color: var(--text-dim);">Expert in Adobe Creative Suite and brand systems, dedicated to enhancing market presence through cohesive storytelling and data-driven design solutions. Based in the Philippines with a Bachelor in Information Technology from Central Philippine State University.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>WORK EXPERIENCE</h2>
+        <div class="grid">
+            <div class="card-content" style="border-left: 2px solid var(--border); margin-bottom: 20px;">
+                <h3 style="color: var(--accent);">Product Design Manager</h3>
+                <p style="color: var(--text-main); font-weight: 600;">Ginyard International Co. | 2020 - 2023</p>
+                <p style="font-size: 0.9rem; margin-top: 10px;">Managed website design, SEO marketing, branding, and logo design while collaborating with the wider development team.</p>
+            </div>
+            <div class="card-content" style="border-left: 2px solid var(--border); margin-bottom: 20px;">
+                <h3 style="color: var(--accent);">Product Design Manager</h3>
+                <p style="color: var(--text-main); font-weight: 600;">Arowwai Industries | 2019 - 2020</p>
+                <p style="font-size: 0.9rem; margin-top: 10px;">Led visual content strategy and brand consistency across digital platforms.</p>
             </div>
         </div>
     </section>
@@ -347,21 +363,21 @@
                 <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/received_267360033126596614052547090387034825.jpeg?w=632" alt="Layout">
                 <div class="card-content">
                     <h3>Design & Layout</h3>
-                    <p>T-shirt sublimation layout and high-quality image editing using professional tools.</p>
+                    <p>Expertise in T-shirt sublimation layout, brand identity, and Adobe Creative Suite.</p>
                 </div>
             </div>
             <div class="card">
                 <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/received_14720831838393725292710248625092296.jpeg?w=683" alt="Dev">
                 <div class="card-content">
-                    <h3>Game Simulation</h3>
-                    <p>Physics-based game development and logic simulations hosted on GitHub.</p>
+                    <h3>Technical IT</h3>
+                    <p>Digital Marketing, SEO, and Physics-based game simulation hosted on GitHub.</p>
                 </div>
             </div>
             <div class="card">
                 <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/received_16477739230848778504253922941591082.jpeg?w=768" alt="3D">
                 <div class="card-content">
                     <h3>3D Modeling</h3>
-                    <p>Hoopshot Vendo Machine: From 3D conceptual modeling to physical prototype output.</p>
+                    <p>Conceptualized and built the "Hoopshot Vendo Machine" prototype from 3D model to physical output.</p>
                 </div>
             </div>
         </div>
@@ -373,15 +389,16 @@
             <img src="https://daverezaba123-qghmk.wordpress.com/wp-content/uploads/2026/04/received_9445525915134996693128524351569481.jpeg?w=716" alt="Cyber Security" style="height: 400px;">
             <div class="card-content">
                 <h3>Cyber Security Completion</h3>
-                <p>Verified course completion in fundamental Cyber Security practices and network defense.</p>
+                <p>Verified mastery in fundamental Cyber Security practices and network defense strategy.</p>
             </div>
         </div>
     </section>
 
     <section id="contact">
         <h2>CONTACT</h2>
-        <div class="contact-info">
-            <p style="font-size: 1.5rem; color: #fff; font-weight: 700;">Ready to collaborate or hire?</p>
+        <div class="contact-info" style="text-align: center;">
+            <p style="font-size: 1.5rem; color: #fff; font-weight: 700;">Ready to collaborate?</p>
+            <p style="color: var(--text-dim);">Phone: 09815600546 | Email: espinosaanthony50@gmail.com</p>
             <div class="social-icons">
                 <a href="mailto:espinosaanthony50@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
                 <a href="https://www.facebook.com/anthony.ortegaespinosa.1" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -402,24 +419,24 @@
             <span onclick="toggleChat()" style="cursor:pointer; font-size: 1.5rem; color: var(--text-dim);">&times;</span>
         </div>
         <div id="chat-messages">
-            <div class="msg bot">Hi! I'm Anthony's AI. How can I help you today?</div>
+            <div class="msg bot">Hi! I'm Anthony's AI. How can I help you learn about his experience?</div>
         </div>
         
         <div class="chat-options">
+            <button class="opt-btn" onclick="handleQuickAction('Experience')">Work History</button>
             <button class="opt-btn" onclick="handleQuickAction('Skills')">Skills</button>
-            <button class="opt-btn" onclick="handleQuickAction('Certificates')">Certificates</button>
+            <button class="opt-btn" onclick="handleQuickAction('Education')">Education</button>
             <button class="opt-btn" onclick="handleQuickAction('Contact')">Contact</button>
-            <button class="opt-btn" onclick="handleQuickAction('3D Projects')">3D Projects</button>
         </div>
 
         <div id="chat-input-area">
-            <input type="text" id="chat-input" placeholder="Ask a question..." onkeypress="handleChat(event)">
+            <input type="text" id="chat-input" placeholder="Ask about Anthony..." onkeypress="handleChat(event)">
         </div>
     </div>
 
     <script>
         function downloadCV() {
-            const cvContent = "Anthony Espinosa CV\nIT Professional\nSkills: Web Dev, 3D Modeling, Cyber Security.";
+            const cvContent = "Anthony Espinosa\nGraphics Designer & IT Professional\n\nExperience:\n- Ginyard International (Product Design Manager)\n- Arowwai Industries (Product Design Manager)\n\nEducation:\n- BS Information Technology (CPSU)\n\nSkills:\n- Adobe Creative Suite\n- SEO Marketing\n- 3D Modeling\n- Cyber Security";
             const blob = new Blob([cvContent], { type: 'text/plain' });
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -454,18 +471,18 @@
             
             const msg = userInput.toLowerCase();
             setTimeout(() => {
-                let response = "I'm not sure about that. Try one of the buttons above!";
+                let response = "I can tell you about Anthony's roles at Ginyard, his IT degree, or his design projects. Try one of the buttons!";
                 
-                if (msg.includes('skill') || msg.includes('do')) {
-                    response = "Anthony is skilled in T-shirt layout, image editing, and Game Simulation in GitHub.";
-                } else if (msg.includes('certif') || msg.includes('cyber')) {
-                    response = "Anthony holds a certificate in Cyber Security completion.";
-                } else if (msg.includes('hoopshot') || msg.includes('3d') || msg.includes('vendo')) {
-                    response = "He designed and built a 'Hoopshot Vendo Machine' using 3D modeling and physical construction.";
-                } else if (msg.includes('contact') || msg.includes('email') || msg.includes('gmail') || msg.includes('social')) {
-                    response = "You can contact Anthony at espinosaanthony50@gmail.com or find his social links in the contact section!";
-                } else if (msg.includes('who') || msg.includes('about')) {
-                    response = "Anthony is an aspiring IT professional specializing in systems and user experience.";
+                if (msg.includes('experience') || msg.includes('work') || msg.includes('history')) {
+                    response = "Anthony served as Product Design Manager at both Ginyard International (2020-2023) and Arowwai Industries (2019-2020), leading branding and SEO efforts.";
+                } else if (msg.includes('skill') || msg.includes('design')) {
+                    response = "He is an expert in Adobe Creative Suite, brand systems, SEO marketing, and technical 3D modeling.";
+                } else if (msg.includes('education') || msg.includes('college') || msg.includes('university')) {
+                    response = "Anthony holds a Bachelor of Information Technology from Central Philippine State University (2014-2017).";
+                } else if (msg.includes('contact') || msg.includes('email') || msg.includes('phone')) {
+                    response = "Reach Anthony at 09815600546 or espinosaanthony50@gmail.com.";
+                } else if (msg.includes('3d') || msg.includes('hoopshot')) {
+                    response = "One of his key projects is the Hoopshot Vendo Machine, which involved full 3D modeling and physical prototype construction.";
                 }
                 
                 appendMessage(response, 'bot');
